@@ -7,7 +7,7 @@
 		// Páginas de los módulos
 		// 
 
-		if($get == "nosotros" OR $get == "inicio"){
+		if($get == "nosotros" OR $get == "inicio" OR $get == 'inicioUs'){
 
 			$module = "views/modules/".$get.".php";
 
@@ -77,6 +77,7 @@
 			$module = "views/modules/admin/config.php";
 		
 	}
+
 	  else if($get == "cambio" ){
 
 			$module = "views/modules/admin/config.php";

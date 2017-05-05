@@ -30,8 +30,8 @@
    <script src="views/bootstrap/dataTables/js/jquery.dataTables.js"></script>
    <script src="views/bootstrap/dataTables/js/dataTables.bootstrap4.js"></script>
    <script src="views/bootstrap/js/bootstrap.min.js"></script>
-   <script src="http://code.highcharts.com/highcharts.js"></script>
-   <script src="http://code.highcharts.com/modules/exporting.js"></script>
+  <!--  <script src="http://code.highcharts.com/highcharts.js"></script>
+   <script src="http://code.highcharts.com/modules/exporting.js"></script> -->
    <script src="views/bootstrap/js/app.js"></script>
    <script src="views/bootstrap/js/validarUsuario.js"></script>
    <script src="views/bootstrap/js/claseMenu.js"></script>

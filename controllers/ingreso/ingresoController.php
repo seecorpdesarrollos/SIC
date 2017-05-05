@@ -40,7 +40,14 @@ class Ingreso{
 						echo '<center><div class="alert alert-success"> Bienvenido <strong>'. ' '.	$_SESSION["nombreAdmin"].'</strong></div>';
 						echo '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
 								<span class="sr-only">Loading...</span></center>';
-						echo "<META HTTP-EQUIV='Refresh' CONTENT='3; URL=inicio'>";
+
+						if ($_SESSION['rol'] == 'A') {
+							
+							echo "<META HTTP-EQUIV='Refresh' CONTENT='3; URL=inicio'>";
+						}else{
+							echo "<META HTTP-EQUIV='Refresh' CONTENT='3; URL=inicioUs'>";
+
+						}
 
 					}
 

@@ -7,7 +7,7 @@
 
  	static public function getCategoriasModel($tabla){
 
- 		$sql = Conexion::conectar()->prepare("SELECT * ,COUNT(*) AS total FROM $tabla");
+ 		$sql = Conexion::conectar()->prepare("SELECT *  FROM $tabla");
  		$sql->execute();
  		return $sql->fetchAll();
 
