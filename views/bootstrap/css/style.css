@@ -1,0 +1,134 @@
+
+body{
+	overflow-x: hidden;
+	font-family:  Monaco, Courier New, Courier, monospace;
+}
+.body{
+	background: url(../img/Optimized-fondo.jpg);
+}
+.head{
+	opacity: 0.9;
+	overflow-x: hidden;
+	width: 100%;
+	font-family:  Monaco, Courier New, Courier, monospace;
+	border: 2px solid #D0D0D0;
+	box-shadow: 0 0 8px #D0D0D0;
+	padding: 20px;
+}
+.mains{
+	background: #fff;
+	padding: 10px;
+	border-radius: 7px;
+}
+#tablas{
+	border: 2px solid #D0D0D0;
+	box-shadow: 0 0 8px #D0D0D0;
+	padding: 20px;
+}
+
+.tooltips{
+   cursor: pointer;
+}
+nav{
+	font-family:  Monaco, Courier New, Courier, monospace;
+}
+.main{
+	width: 500px;
+	margin: auto;
+}
+.header{
+	text-align: center;
+}
+hr{
+	border: 2px solid #F84D18;
+}
+.dropdown-menu{
+	background: #E23B14;
+	margin-left: -105px;
+}
+.dropdown-item{
+	color: #fff;
+	
+}
+.btn{
+	cursor: pointer;
+}
+.nav-item{
+	margin-left: 60px;
+}
+
+
+.soporte{
+	margin-left: 150%;
+}
+.a{
+	/*margin:2px;*/
+}
+.rand{
+	border-top: 2px solid #D0D0D0;
+	box-shadow: 0 0 18px #D0D0D0;
+	padding: 20px;
+	color:#000;
+	font-size: 20px;
+	width: 540px;
+}
+footer{
+	bottom: 3px;
+    position: absolute;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+}
+.bg-info{
+	color: #fff;
+}
+.actives{
+	background: #4F4E4E;
+	border-radius: 3px;
+	padding: 5px;
+	border-bottom: 1px solid #67ED60;
+	/*line-height:normal;*/
+	-webkit-transition:all 500ms ease;
+	-o-transition:all 500ms ease;
+	transition:all 500ms ease;
+}
+
+@media screen and (max-width: 1000px) {
+	.soporte ,.usu{
+		display: none;
+	}
+}
+
+@media screen and (max-width: 3000px) {
+	.dataTables_info{
+		display: none;
+	}
+}
+@media screen and (max-width: 1000px) {
+	body{
+		overflow-x: hidden;
+	}
+}
+@media screen and (max-width: 800px) {
+	footer{
+	    position: relative;
+		bottom: -10px;
+	    width: 100%;
+	    color: #fff;
+	  
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.main{
+		width: 100%;
+	}
+}
+
+
+@media screen and (max-width: 800px) {
+	.rand{
+		width: 100%;
+		margin-left:10%;
+	}
+}
