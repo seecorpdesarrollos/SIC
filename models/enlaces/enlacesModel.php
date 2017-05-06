@@ -7,7 +7,7 @@
 		// Páginas de los módulos
 		// 
 
-		if($get == "nosotros" OR $get == "inicio" OR $get == 'inicioUs'){
+		if( $get == "inicio" OR $get == 'inicioUs'){
 
 			$module = "views/modules/".$get.".php";
 
@@ -15,7 +15,57 @@
 		 // 
 		// Fin de las Páginas
 		// --------------------------------------------------------
+		// 
+	
+		 //  // 
+		//  Páginas DE proveedores
+		// --------------------------------------------------------
 		
+		 else if($get == "proveedores" ){
+
+			$module = "views/modules/proveedores/proveedores.php";
+		
+	     }
+
+	      else if($get == "agragarproveedores" ){
+
+			$module = "views/modules/proveedores/proveedores.php";
+		
+	     }
+
+
+
+		 // 
+		//  FIN DE proveedores
+		// --------------------------------------------------------
+		  // 
+
+		//  // 
+		//  Páginas DE Productos
+		// --------------------------------------------------------
+		
+		 else if($get == "productos" ){
+
+			$module = "views/modules/productos/productos.php";
+		
+	     }
+
+	      else if($get == "agragarproductos" ){
+
+			$module = "views/modules/productos/productos.php";
+		
+	     }
+	      else if($get == "okProductos" OR $get == "editadoPro" ){
+
+				$module = "views/modules/productos/productos.php";
+		
+	     }
+
+
+
+		 // 
+		//  FIN DE Productos
+		// --------------------------------------------------------
 		  // 
 		//  Páginas DE CATEGIRIAS
 		// --------------------------------------------------------

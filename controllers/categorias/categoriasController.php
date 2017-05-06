@@ -11,10 +11,20 @@
      	echo'<tr>
              <td>'.$key['idCategoria'].'</td>
              <td>'.$key['nombreCategoria'].'</td>
-             <td align="center"><a href="index.php?action=editarCat&idEditar='.$key['idCategoria'].'"><i class="fa fa-edit btn btn-outline-primary btn-sm"></i></a> &nbsp;<a href="index.php?action=categorias&id='.$key['idCategoria'].'"><i class="fa fa-trash  btn btn-outline-danger btn-sm"></i></a></td>
+             <td align="center"><a href="index.php?action=editarCat&idEditar='.$key['idCategoria'].'"><i class="fa fa-edit btn btn-outline-primary btn-sm"></i></a> <a href="index.php?action=categorias&id='.$key['idCategoria'].'"><i class="fa fa-trash  btn btn-outline-danger btn-sm"></i></a></td>
              </tr>';
      }
  	}
+
+    public function getCategoriasSelectController(){
+     
+     $respuesta = categoriasModel::getCategoriasModel('categorias');
+     foreach ($respuesta as $key ) {
+       echo'
+           <option value="'.$key['idCategoria'].'">'. ucwords($key['nombreCategoria']).' </option>
+         ';
+     }
+  }
 
 public function getCategoriasGraficoController(){
      

@@ -13,12 +13,16 @@
 	require_once "controllers/ingreso/ingresoController.php";
 	require_once "controllers/admin/adminController.php";
 	require_once "controllers/categorias/categoriasController.php";
+	require_once "controllers/productos/productosController.php";
+	require_once "controllers/proveedores/proveedoresController.php";
 
 	// modelos
 	require_once "models/enlaces/enlacesModel.php";
 	require_once "models/ingreso/ingresoModel.php";
 	require_once "models/admin/adminModel.php";
 	require_once "models/categorias/categoriasModel.php";
+	require_once "models/productos/productosModel.php";
+	require_once "models/proveedores/proveedoresModel.php";
 
 
 	$mvc = new MvcController();

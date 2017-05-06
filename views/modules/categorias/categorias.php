@@ -59,8 +59,8 @@ if(!$_SESSION["nombreAdmin"]){
       <ol class="breadcrumb">
        <li class="breadcrumb-item active">Listado de Categorías</li>
      </ol>
- 			<table class="table table-bordered" id="tablas">
- 				<thead class="bg-info">
+ 			<table class="table table-striped table-sm" id="tablas">
+ 				<thead class="bg-inverse">
  				<tr>
  						<td>Id Categorias</td>
  						<td>Nombre Categoría</td>
@@ -70,7 +70,7 @@ if(!$_SESSION["nombreAdmin"]){
 		 			<?php 
 		 				$datos = new categoriasController();
 		 				$datos->getCategoriasController();
-		 			    $datos->deleteCategoriaController();
+		 			  $datos->deleteCategoriaController();
 		 			 ?>	
  			</table>
  		<?php endif ?>

@@ -11,11 +11,11 @@
         <a class="nav-link" href="categorias" id="cate">Categorías <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="nosotros">Nosotros</a>
+        <a class="nav-link" href="productos">Productos</a>
       </li>
-     <li class="nav-item soporte active">
-          <a class="nav-link animated " href="https://diegopennisi.es/" target="_blanck">Soporte</a>
-        </li>
+       <li class="nav-item active">
+        <a class="nav-link" href="proveedores">Proveedores</a>
+      </li>
        <li class="nav-item dropdown navbar-toggler-right active">
           <a class="nav-link dropdown-toggle animated bounceInDown" href="config" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="usu"><i class="fa fa-user"></i></span>
           <?php echo strtoupper($_SESSION['nombreAdmin']); ?>
@@ -23,7 +23,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="sesion"><i class="fa fa-close"></i> Salir</a>
             <a class="dropdown-item" href="config"><i class="fa fa-gear"></i> Configuración</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+           <a class="dropdown-item" href="https://diegopennisi.es/" target="_blanck"><i class="fa fa-support"></i> Soporte</a>
           </div>
         </li>
     </ul>
@@ -42,9 +42,11 @@
         <a class="nav-link" href="categorias">Categorías <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="nosotros">Nosotros</a>
+        <a class="nav-link" href="productos">Productos</a>
       </li>
-    <!-- -->
+       <li class="nav-item active">
+        <a class="nav-link" href="proveedores">Proveedores</a>
+      </li>
        <li class="nav-item dropdown navbar-toggler-right active">
           <a class="nav-link dropdown-toggle animated bounceInDown" href="https://diegopennisi.es" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="usu"><i class="fa fa-user"></i></span>
           <?php echo strtoupper($_SESSION['nombreAdmin']); ?>
