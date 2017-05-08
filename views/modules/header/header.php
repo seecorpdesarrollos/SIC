@@ -10,5 +10,6 @@
   <link rel="stylesheet" type="text/css" href="views/bootstrap/dataTables/css/dataTables.bootstrap4.css">
   <link rel="stylesheet" type="text/css" href="views/bootstrap/css/style.css">
   <link rel="stylesheet" type="text/css" href="views/bootstrap/css/animate.css">
+  <link rel="stylesheet" type="text/css" href="views/bootstrap/chosen/chosen.css">
 </head>
 <body>

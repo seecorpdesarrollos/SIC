@@ -44,18 +44,21 @@ if(!$_SESSION["nombreAdmin"]){
       </div>';
        echo "<META HTTP-EQUIV='Refresh' CONTENT='4; URL=categorias'>";
    }
-   }
+ }
    ?>
  <div class="row">
  	<div class="col-md-3">
  		<div class="list-group">
 		  <a href="productos"  class="list-group-item">Listado Productos</a>
-		  <a href="agragarproductos" class="list-group-item">Productos Nuevos </a>
+      <a href="agragarproductos" class="list-group-item">Productos Nuevos </a>
+		  <a href="inventario" class="list-group-item">Inventario </a>
 		</div>
  	</div>
- 	<div class="col-md-9">
+  <div class="col-md-9">
+    <div class="card">
+    <div class="card-block">
  	<?php if (isset($_GET['action'])): ?>
- 		<?php if ($_GET['action'] == 'productos' OR $_GET['action'] == 'okProductos'  OR $_GET['action'] == 'Deletproductos' OR $_GET['action'] == 'editarProd' OR $_GET['action'] == 'editadoProd'): ?>
+    <?php if ($_GET['action'] == 'productos' OR $_GET['action'] == 'okProductos'  OR $_GET['action'] == 'Deletproductos' OR $_GET['action'] == 'editarProd' OR $_GET['action'] == 'editadoProd' ): ?>
       <ol class="breadcrumb">
        <li class="breadcrumb-item active">Listado de Productos</li>
      </ol>
@@ -83,12 +86,15 @@ if(!$_SESSION["nombreAdmin"]){
              </tr>
            <?php endforeach ?>
  			</table>
+</div>
+</div>
+</div>
  		<?php endif ?>
-
     <!-- Formulario de registro de los productos -->
     <!-- ========================================== -->
-
  		<?php if ($_GET['action'] == 'agragarproductos'): ?>
+   <div class="card">
+  <div class="card-block">
       <ol class="breadcrumb">
        <li class="breadcrumb-item active">Agregar Productos</li>
      </ol>
@@ -104,7 +110,7 @@ if(!$_SESSION["nombreAdmin"]){
       <div class="col-md-6">
         <div class="form-group">
           <label for="nombreCategorias">Nombre Proveedor</label>
-          <select  class="form-control"  name="idProveedor">
+         <select style="width:356px;"  class="chosen-select"  name="idProveedor">
            <option>Elegir Proveedor</option>
            <?php 
             $b= new ProveedoresController();
@@ -122,19 +128,32 @@ if(!$_SESSION["nombreAdmin"]){
       <div class="col-md-6">
         <div class="form-group">
           <label for="nombreCategorias">Nombre Cateroría</label>
-           <select class="form-control" name="idCategoria">
+           <select style="width:356px;"  class="chosen-select"  name="idCategoria">
              <option>Elegir Categorías</option>
              <?php $a=new categoriasController;
                   $a->getCategoriasSelectController(); ?>
             </select>
         </div>
       </div>
-                <input type="submit" name="agragarpro" id="button" value="Agregar Productos" class="btn btn-outline-danger btn-block">         
+                <input type="submit" name="agragarproveedor" id="button" value="Agregar Productos" class="btn btn-outline-danger btn-block">         
         </form>
      </div>
- 	</div>
+  </div>
  </div>
  		<?php endif ?>
+
+
+    <!--  -->
+    <!-- Sección de inventarios -->
+  <div class="card">
+  <div class="card-block">
+    <?php if ($_GET['action'] == 'inventario'): ?>
+      <h1 class="alert alert-warning">Seccion de Inventarios</h1>
+  </div>
+  </div>
+
+    <?php endif ?>
+
  	<?php endif ?>
 
  

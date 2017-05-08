@@ -86,31 +86,40 @@ if(!$_SESSION["nombreAdmin"]){
      <div class="row">  
       <div class="col-md-6">
         <div class="form-group">
-          <label for="nombreCategorias">Nombre Productos</label>
-          <input type="text" class="form-control" id="nombreProductos" placeholder="Nombre del Producto"  name="nombreCategoria" required="">
+          <label for="nombreCategorias" class="text-primary">Nombre Proveedor</label>
+          <input type="text" class="form-control" id="nombreProveedor" placeholder="Nombre del Proveedor"  name="nombreProveedor" required="">
         </div>
-          <span id="cat"></span>
+          <span id="prov"></span>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="nombreCategorias">Nombre Proveedor</label>
-          <select  class="form-control"  required>
-           <option>Elegir Proveedor</option>
-           <option></option>
-         </select>
+          <label for="nombreCategorias" class="text-primary">Apellido Proveedor</label>
+          <input type="text" class="form-control" id="apellidoProveedor" placeholder="Apellido del Proveedor"  name="apellidoProveedor" required="">
         </div>
       </div>
        <div class="col-md-6">
         <div class="form-group">
-          <label for="nombreCategorias">Precio Productos ($ 2.50 )</label>
-          <input type="text" class="form-control" id="precioCategorias" placeholder="precio del Producto"  name="precioProductos" required="">
+          <label for="nombreCategorias" class="text-primary">Nombre Empresa</label>
+          <input type="text" class="form-control" id="nombreEmpresa" placeholder="Nombre del la Empresa"  name="nombreEmpresa" required="">
+        </div>
+      </div>
+       <div class="col-md-6">
+        <div class="form-group">
+          <label for="nombreCategorias" class="text-primary">Telefono Contacto</label>
+          <input type="text" class="form-control" id="telefonoProveedor" placeholder="Teléfono del la Empresa"  name="telefonoProveedor" required="">
+        </div>
+      </div>
+       <div class="col-md-6">
+        <div class="form-group">
+          <label for="nombreCategorias" class="text-primary">Direción Proveedor</label>
+          <input type="text" class="form-control" id="direccionProveedor" placeholder="dirección del la Empresa"  name="direccionProveedor" required="">
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="nombreCategorias">Nombre Cateroría</label>
-           <select class="form-control">
-             <option>Elegir Categorías</option>
+          <label for="nombreCategorias" class=text-primary>Nombre Cateroría</label>
+         <select style="width:396px;"  class="chosen-select">
+         <option>Elegir Categorías</option>
              <?php 
                 $a=new categoriasController;
                 $a->getCategoriasSelectController();

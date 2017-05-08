@@ -55,11 +55,12 @@
 			$module = "views/modules/productos/productos.php";
 		
 	     }
-	      else if($get == "okProductos" OR $get == "editadoPro" ){
+	      else if($get == "okProductos" OR $get == "editadoPro" OR $get == 'inventario' ){
 
 				$module = "views/modules/productos/productos.php";
 		
 	     }
+
 
 
 
