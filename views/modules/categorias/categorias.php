@@ -47,18 +47,18 @@ if(!$_SESSION["nombreAdmin"]){
    }
    ?>
  <div class="row">
- 	<div class="col-md-4">
+ 	<div class="col-md-3">
  		<div class="list-group">
-		  <a href="categorias"  class="list-group-item">Listado Categorías</a>
-		  <a href="agragarCategorias" class="list-group-item">Agregar Categorías Nuevas </a>
+		  <a href="categorias"  class="list-group-item"><i class="fa fa-list-alt"></i> Listado Categorías </a>
+		  <a href="agragarCategorias" class="list-group-item"> <i  class="fa fa-edit"></i> Categorías Nuevas </a>
 		</div>
  	</div>
- 	<div class="col-md-8">
+ 	<div class="col-md-9">
+  <div class="card">
+  <div class="card-block">
  	<?php if (isset($_GET['action'])): ?>
  		<?php if ($_GET['action'] == 'categorias' OR $_GET['action'] == 'okCategorias'  OR $_GET['action'] == 'DeletCategorias' OR $_GET['action'] == 'editarCat' OR $_GET['action'] == 'editadoCat'): ?>
-      <ol class="breadcrumb">
-       <li class="breadcrumb-item active">Listado de Categorías</li>
-     </ol>
+     <h1 class="alert alert-warning text-center">Listado de Categorías</h1>
  			<table class="table table-striped table-sm" id="tablas">
  				<thead class="bg-inverse">
  				<tr>
@@ -76,9 +76,7 @@ if(!$_SESSION["nombreAdmin"]){
  		<?php endif ?>
 
  		<?php if ($_GET['action'] == 'agragarCategorias'): ?>
-      <ol class="breadcrumb">
-       <li class="breadcrumb-item active">Agregar Categorías</li>
-     </ol>
+        <h1 class="alert alert-warning text-center">Agregar Categorías</h1>
  			<form method="post" onsubmit="return validarCategorias()">
                <div class="form-group">
 			    <label for="nombreCategorias">Nombre Categorías</label>

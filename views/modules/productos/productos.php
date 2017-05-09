@@ -59,9 +59,8 @@ if(!$_SESSION["nombreAdmin"]){
     <div class="card-block">
  	<?php if (isset($_GET['action'])): ?>
     <?php if ($_GET['action'] == 'productos' OR $_GET['action'] == 'okProductos'  OR $_GET['action'] == 'Deletproductos' OR $_GET['action'] == 'editarProd' OR $_GET['action'] == 'editadoProd' ): ?>
-      <ol class="breadcrumb">
-       <li class="breadcrumb-item active">Listado de Productos</li>
-     </ol>
+      <h1 class="alert alert-warning text-center">Listado de Productos</h1>
+      
  			<table class="table table-striped table-sm" id="tablas">
  				<thead class="badge-warning actives">
  				<tr>
@@ -93,11 +92,9 @@ if(!$_SESSION["nombreAdmin"]){
     <!-- Formulario de registro de los productos -->
     <!-- ========================================== -->
  		<?php if ($_GET['action'] == 'agragarproductos'): ?>
-   <div class="card">
-  <div class="card-block">
-      <ol class="breadcrumb">
-       <li class="breadcrumb-item active">Agregar Productos</li>
-     </ol>
+
+      <h1 class="alert alert-warning text-center">Agregar Productos</h1>
+      
         <form method="post" onsubmit="return validarCategorias()">
      <div class="row">  
       <div class="col-md-6">
@@ -135,18 +132,18 @@ if(!$_SESSION["nombreAdmin"]){
             </select>
         </div>
       </div>
-                <input type="submit" name="agragarproveedor" id="button" value="Agregar Productos" class="btn btn-outline-danger btn-block">         
+               <div class="center">
+                <input type="submit" name="agragarproveedor" id="button" value="Agregar Productos" class="btn btn-outline-danger">
+               </div>
         </form>
      </div>
-  </div>
- </div>
+
  		<?php endif ?>
 
 
     <!--  -->
     <!-- Sección de inventarios -->
-  <div class="card">
-  <div class="card-block">
+ 
     <?php if ($_GET['action'] == 'inventario'): ?>
       <h1 class="alert alert-warning">Seccion de Inventarios</h1>
   </div>

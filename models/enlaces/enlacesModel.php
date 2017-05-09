@@ -21,7 +21,7 @@
 		//  Páginas DE proveedores
 		// --------------------------------------------------------
 		
-		 else if($get == "proveedores" ){
+		 else if($get == "proveedores" OR $get == 'okProv'){
 
 			$module = "views/modules/proveedores/proveedores.php";
 		

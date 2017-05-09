@@ -37,6 +37,9 @@ nav{
 	width: 500px;
 	margin: auto;
 }
+.center{
+	margin:auto;
+}
 .header{
 	text-align: center;
 }

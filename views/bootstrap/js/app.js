@@ -21,6 +21,7 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 });
 
+ 
 $('#ok').hide(8000);
 
 $('#password').modal('show');
