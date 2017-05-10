@@ -28,12 +28,8 @@ if (isset($_GET['action'])) {
 <strong>
     Enorabuena!
 </strong>
-La Categoria fue agregada correctamente.
-';
-        echo "
-<meta content="4;
-        URL = categorias" http-equiv="Refresh">
-    ";
+La Categoria fue agregada correctamente.';
+        echo '<meta http-equiv="Refresh" content="4;URL = categorias" >';
     }
     if ($_GET['action'] == 'editadoCat') {
         echo '
@@ -47,12 +43,8 @@ La Categoria fue agregada correctamente.
             Enorabuena!
         </strong>
         La Categoria fue Editada correctamente al Sistema.
-    </div>
-    ';
-        echo "
-    <meta content="4;
-        URL = categorias" http-equiv="Refresh">
-        ";
+    </div>';
+        echo '<meta content="4; URL = categorias" http-equiv="Refresh"> ';
     }
     if ($_GET['action'] == 'DeletCategorias') {
         echo '
@@ -68,10 +60,10 @@ La Categoria fue agregada correctamente.
             La Categoria fue Borrada correctamente del sistema.
         </div>
         ';
-        echo "
+        echo '
         <meta content="4;
         URL = categorias" http-equiv="Refresh">
-            ";
+            ';
     }
 }
 ?>
