@@ -1,6 +1,6 @@
 <?php
 
-require_once 'models/conexion.php';
+// require_once 'models/conexion.php';
 class ProveedoresModel
 {
 
@@ -8,9 +8,9 @@ class ProveedoresModel
     {
 
         $sql = Conexion::conectar()->prepare("SELECT * FROM $tabla pro
-      	JOIN ciudad ciu ON pro.idCiudad = ciu.idCiudad
-      	JOIN provincia prov ON ciu.idProvincia = prov.idProvincia
-      	");
+        JOIN ciudad ciu ON pro.idCiudad = ciu.idCiudad
+        JOIN provincia prov ON ciu.idProvincia = prov.idProvincia
+        ");
         $sql->execute();
         return $sql->fetchAll();
 
@@ -20,8 +20,8 @@ class ProveedoresModel
     public static function getCiudadModel($tabla)
     {
         $sql = Conexion::conectar()->prepare("SELECT * FROM $tabla ta JOIN
- 		                                   provincia prov ON ta.idProvincia = prov.idProvincia
- 			                                ");
+                                           provincia prov ON ta.idProvincia = prov.idProvincia
+                                            ");
         $sql->execute();
 
         return $sql->fetchAll();
@@ -32,8 +32,8 @@ class ProveedoresModel
     public static function agregarProveedorModel($datosModel, $tabla)
     {
         $sql = Conexion::conectar()->prepare("INSERT INTO $tabla(nombreProveedor,apellidoProveedor,nombreEmpresa,telefonoProveedor,direccionProveedor,
- 			idCiudad)VALUES (:nombreProveedor,:apellidoProveedor,:nombreEmpresa,:telefonoProveedor,:direccionProveedor,
- 			:idCiudad)");
+            idCiudad)VALUES (:nombreProveedor,:apellidoProveedor,:nombreEmpresa,:telefonoProveedor,:direccionProveedor,
+            :idCiudad)");
 
         $sql->bindParam(':nombreProveedor', $datosModel['nombreProveedor']);
         $sql->bindParam(':apellidoProveedor', $datosModel['apellidoProveedor']);
@@ -47,6 +47,19 @@ class ProveedoresModel
         } else {
             return 'error';
         }
+        $sql->close();
+    }
+
+    public static function validarProveedorModel($datosModel, $tabla)
+    {
+
+        $sql = Conexion::conectar()->prepare("SELECT nombreEmpresa FROM $tabla WHERE nombreEmpresa = :nombreEmpresa");
+        $sql->bindParam(':nombreEmpresa', $datosModel);
+
+        $sql->execute();
+
+        return $sql->fetch();
+
         $sql->close();
     }
 }

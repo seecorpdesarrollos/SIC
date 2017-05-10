@@ -117,7 +117,7 @@ $datos->deleteCategoriaController();
                                 Agregar Categorías
                             </h1>
                             <form method="post" onsubmit="return validarCategorias()">
-                                <div class="form-group">
+                                <div class="form-group" id="form">
                                     <label for="nombreCategorias">
                                         Nombre Categorías
                                     </label>

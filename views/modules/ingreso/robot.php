@@ -2,8 +2,8 @@
 
 if (isset($_POST['submit'])) {
     $error = '';
-    $rand  = $_POST['rand'];
-    $vas   = $_POST['va'];
+    $rand = $_POST['rand'];
+    $vas = $_POST['va'];
     // var_dump($rand);
     // var_dump($vas);
     if ($rand == $vas) {
@@ -15,10 +15,9 @@ if (isset($_POST['submit'])) {
     Verificando Informacion....
 </span>
 ';
-        $redirect = "
-<meta content="3;
+        $redirect = '<meta content="3;
         URL       = ingreso" http-equiv="Refresh">
-    ";
+    ';
         // header('location:ingreso');
     } else {
         $error .= "Los números ingresados  no son correcto. ";

@@ -26,7 +26,7 @@ $("#nombreAdmin").change(function() {
                 $("#form").addClass('has-success');
                 $("#nombreAdmin").removeClass('form-control form-control-danger');
                 $("#nombreAdmin").addClass('form-control form-control-success');
-                $('#nombreAdmin').css('border', 'solid 1.8px #8FF48A');
+                $('#nombreAdmin').css('border', 'solid 1px #8FF48A');
                 $("#validar").html('');
                 $("#button").removeAttr('disabled', 'disabled');
                 usuarioExistente = false;
@@ -67,7 +67,7 @@ $("#nombreCategorias").change(function() {
                 $("#form").addClass('has-success');
                 $("#nombreCategorias").removeClass('form-control form-control-danger');
                 $("#nombreCategorias").addClass('form-control form-control-success');
-                $('#nombreCategorias').css('border', 'solid 1.8px #8FF48A');
+                $('#nombreCategorias').css('border', 'solid 1px #8FF48A');
                 $("#cat").html('');
                 $("#button").removeAttr('disabled', 'disabled');
                 usuarioExistente = false;
@@ -101,3 +101,42 @@ function validarRegistro() {
     }
     return true;
 }
+// ===================================================================
+// 
+//    validar el registro de las Proveedores
+// ===================================================================
+// 
+var usuarioExistente = false;
+$("#nombreEmpresa").change(function() {
+    var proveedor = $('#nombreEmpresa').val();
+    console.log(proveedor);
+    var datos = new FormData();
+    datos.append('inputvalidarProveedor', proveedor);
+    $.ajax({
+        url: 'views/ajax.php',
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(respuesta) {
+            if (respuesta == 1) {
+                $("#prove").html('<p  class="alert alert-danger">Esta Empresa ya Existe</p>');
+                $('#prove').addClass('a');
+                $("#form").addClass('has-danger');
+                $("#nombreEmpresa").addClass('form-control form-control-danger');
+                $("#button").attr('disabled', 'disabled');
+                usuarioExistente = true;
+            } else {
+                $("#form").removeClass('has-danger');
+                $("#form").addClass('has-success');
+                $("#nombreEmpresa").removeClass('form-control form-control-danger');
+                $("#nombreEmpresa").addClass('form-control form-control-success');
+                $('#nombreEmpresa').css('border', 'solid 1px #8FF48A');
+                $("#prove").html('');
+                $("#button").removeAttr('disabled', 'disabled');
+                usuarioExistente = false;
+            }
+        }
+    })
+});
