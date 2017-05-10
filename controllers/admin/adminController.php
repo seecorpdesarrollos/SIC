@@ -69,7 +69,7 @@
                                 'rol'=>$_POST['rol'],
                                 'fechaCreado'=>$_POST['fechaCreado']
                                 );
-          var_dump($datosController);
+          // var_dump($datosController);
         $respuesta = AdminModel::agregarUsuariosModel($datosController , 'administrador');
        
         if ($respuesta == 'success') {

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once '../controllers/admin/adminController.php';
 require_once '../controllers/categorias/categoriasController.php';
@@ -8,34 +8,37 @@ require_once '../models/categorias/categoriasModel.php';
 
 require_once '../models/conexion.php';
 
- class Ajax{
+class Ajax
+{
 
- 	public $validarUsuario;
- 	public $validarCategoria;
+    public $validarUsuario;
+    public $validarCategoria;
 
- 	public function validarUsuarioAjax(){
- 		$datos = $this->validarUsuario;
+    public function validarUsuarioAjax()
+    {
+        $datos = $this->validarUsuario;
 
- 		$respuesta = Admin::validarUsuarioController($datos);
- 		echo $respuesta;
- 	}
+        $respuesta = Admin::validarUsuarioController($datos);
+        echo $respuesta;
+    }
 
- 	public function validarCategoriaAjax(){
- 		$datos = $this->validarCategoria;
+    public function validarCategoriaAjax()
+    {
+        $datos = $this->validarCategoria;
 
- 		$respuesta = categoriasController::validarCategoriaController($datos);
- 		echo $respuesta;
- 	}
- }
+        $respuesta = categoriasController::validarCategoriaController($datos);
+        echo $respuesta;
+    }
+}
 
- if(isset($_POST['inputvalidarUsuario'])){
- 	$a= new Ajax();
- 	$a->validarUsuario = $_POST['inputvalidarUsuario'];
- 	$a->validarUsuarioAjax();
- }
+if (isset($_POST['inputvalidarUsuario'])) {
+    $a                 = new Ajax();
+    $a->validarUsuario = $_POST['inputvalidarUsuario'];
+    $a->validarUsuarioAjax();
+}
 
-  if(isset($_POST['inputvalidarCategoria'])){
- 	$c= new Ajax();
-  	$c->validarCategoria = $_POST['inputvalidarCategoria'];
- 	$c->validarCategoriaAjax();
- }
+if (isset($_POST['inputvalidarCategoria'])) {
+    $c                   = new Ajax();
+    $c->validarCategoria = $_POST['inputvalidarCategoria'];
+    $c->validarCategoriaAjax();
+}

@@ -2,42 +2,41 @@
 
 require_once "models/conexion.php";
 
-class IngresoModels{
+class IngresoModels
+{
 
-	static public function ingresoModel($datosModel, $tabla){
+    public static function ingresoModel($datosModel, $tabla)
+    {
 
-		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE nombreAdmin = :nombreAdmin");
+        $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE nombreAdmin = :nombreAdmin");
 
-		$stmt -> bindParam(":nombreAdmin", $datosModel["nombreAdmin"], PDO::PARAM_STR);
-		
-		$stmt -> execute();
+        $stmt->bindParam(":nombreAdmin", $datosModel["nombreAdmin"], PDO::PARAM_STR);
 
-		return $stmt -> fetch();
+        $stmt->execute();
 
-		$stmt -> close();
+        return $stmt->fetch();
 
-	}
+        $stmt->close();
 
-	static public function intentosModel($datosModel, $tabla){
+    }
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET intentos = :intentos WHERE nombreAdmin =:nombreAdmin");
+    public static function intentosModel($datosModel, $tabla)
+    {
 
-		$stmt -> bindParam(":intentos", $datosModel["actualizarIntentos"], PDO::PARAM_INT);
-		$stmt -> bindParam(":nombreAdmin", $datosModel["nombreAdminActual"], PDO::PARAM_STR);
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET intentos = :intentos WHERE nombreAdmin =:nombreAdmin");
 
-		if($stmt -> execute()){
+        $stmt->bindParam(":intentos", $datosModel["actualizarIntentos"], PDO::PARAM_INT);
+        $stmt->bindParam(":nombreAdmin", $datosModel["nombreAdminActual"], PDO::PARAM_STR);
 
-			return "ok";
+        if ($stmt->execute()) {
 
-		}
+            return "ok";
 
-		else{
+        } else {
 
-			return "error";
-		}
+            return "error";
+        }
 
-	}
-
-	
+    }
 
 }

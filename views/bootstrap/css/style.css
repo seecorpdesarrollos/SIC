@@ -1,144 +1,155 @@
-
-body{
-	overflow-x: hidden;
-	font-family:  Monaco, Courier New, Courier, monospace;
-}
-.body{
-	background: url(../img/Optimized-fondo.jpg);
-}
-.head{
-	opacity: 0.9;
-	overflow-x: hidden;
-	width: 100%;
-	font-family:  Monaco, Courier New, Courier, monospace;
-	border: 2px solid #D0D0D0;
-	box-shadow: 0 0 8px #D0D0D0;
-	padding: 20px;
-}
-.mains{
-	background: #fff;
-	padding: 10px;
-	border-radius: 7px;
-}
-#tablas{
-	border: 2px solid #D0D0D0;
-	box-shadow: 0 0 8px #D0D0D0;
-	padding: 20px;
-	border-radius: 4px;
+body {
+    font-family: Monaco, Courier New, Courier, monospace;
+    overflow-x: hidden;
 }
 
-.tooltips{
-   cursor: pointer;
-}
-nav{
-	font-family:  Monaco, Courier New, Courier, monospace;
-}
-.main{
-	width: 500px;
-	margin: auto;
-}
-.center{
-	margin:auto;
-}
-.header{
-	text-align: center;
-}
-hr{
-	border: 2px solid #F84D18;
-}
-.dropdown-menu{
-	background: #E23B14;
-	margin-left: -105px;
-}
-.dropdown-item{
-	color: #fff;
-	
-}
-.btn{
-	cursor: pointer;
-}
-.nav-item{
-	margin-left: 60px;
+.body {
+    background: url(../img/Optimized-fondo.jpg);
 }
 
-
-.soporte{
-	
-}
-.a{
-	/*margin:2px;*/
-}
-.rand{
-	border-top: 2px solid #D0D0D0;
-	box-shadow: 0 0 18px #D0D0D0;
-	padding: 20px;
-	color:#000;
-	font-size: 20px;
-	width: 540px;
-}
-footer{
-	bottom: 3px;
-    position: absolute;
+.head {
+    font-family: Monaco, Courier New, Courier, monospace;
+    overflow-x: hidden;
     width: 100%;
-    color: #fff;
+    padding: 20px;
+    opacity: .9;
+    border: 2px solid #d0d0d0;
+    box-shadow: 0 0 8px #d0d0d0;
+}
+
+.mains {
+    padding: 10px;
+    border-radius: 7px;
+    background: #fff;
+}
+
+#tablas {
+    padding: 20px;
+    border: 2px solid #d0d0d0;
+    border-radius: 4px;
+    box-shadow: 0 0 8px #d0d0d0;
+}
+
+.tooltips {
+    cursor: pointer;
+}
+
+nav {
+    font-family: Monaco, Courier New, Courier, monospace;
+}
+
+.main {
+    width: 500px;
+    margin: auto;
+}
+
+.center {
+    margin: auto;
+}
+
+.header {
     text-align: center;
 }
-.bg-inverse{
-	color: #fff;
-	border-radius: 4px;
+
+hr {
+    border: 2px solid #f84d18;
 }
-thead{
-	text-align: center;
-	
+
+.dropdown-menu {
+    margin-left: -105px;
+    background: #e23b14;
 }
-.actives{
-	color: #fff;
-	background: #4F4E4E;
-	border-radius: 3px;
-	padding: 5px;
-	border-bottom: 1px solid #67ED60;
-	/*line-height:normal;*/
-	-webkit-transition:all 500ms ease;
-	-o-transition:all 500ms ease;
-	transition:all 500ms ease;
+
+.dropdown-item {
+    color: #fff;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.nav-item {
+    margin-left: 60px;
+}
+
+.a {
+    /*margin:2px;*/
+}
+
+.rand {
+    font-size: 20px;
+    width: 540px;
+    padding: 20px;
+    color: #000;
+    border-top: 2px solid #d0d0d0;
+    box-shadow: 0 0 18px #d0d0d0;
+}
+
+footer {
+    position: absolute;
+    bottom: 3px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+}
+
+.bg-inverse {
+    color: #fff;
+    border-radius: 4px;
+}
+
+thead {
+    text-align: center;
+}
+
+.actives {
+    padding: 5px;
+    /*line-height:normal;*/
+    -webkit-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+    color: #fff;
+    border-bottom: 1px solid #67ed60;
+    border-radius: 3px;
+    background: #4f4e4e;
 }
 
 @media screen and (max-width: 1000px) {
-	.soporte ,.usu{
-		display: none;
-	}
+    .soporte, .usu {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 3000px) {
-	.dataTables_info{
-		display: none;
-	}
+    .dataTables_info {
+        display: none;
+    }
 }
+
 @media screen and (max-width: 1000px) {
-	body{
-		overflow-x: hidden;
-	}
-}
-@media screen and (max-width: 800px) {
-	footer{
-	    position: relative;
-		bottom: -10px;
-	    width: 100%;
-	    color: #fff;
-	  
-	}
+    body {
+        overflow-x: hidden;
+    }
 }
 
 @media screen and (max-width: 800px) {
-	.main{
-		width: 100%;
-	}
+    footer {
+        position: relative;
+        bottom: -10px;
+        width: 100%;
+        color: #fff;
+    }
 }
 
+@media screen and (max-width: 800px) {
+    .main {
+        width: 100%;
+    }
+}
 
 @media screen and (max-width: 800px) {
-	.rand{
-		width: 100%;
-		margin-left:10%;
-	}
+    .rand {
+        width: 100%;
+        margin-left: 10%;
+    }
 }

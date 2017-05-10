@@ -1,78 +1,82 @@
-<?php 
-
+<?php
 
 // require_once "models/conexion.php";
 
- class categoriasModel{
+class categoriasModel
+{
 
- 	static public function getCategoriasModel($tabla){
+    public static function getCategoriasModel($tabla)
+    {
 
- 		$sql = Conexion::conectar()->prepare("SELECT *  FROM $tabla");
- 		$sql->execute();
- 		return $sql->fetchAll();
+        $sql = Conexion::conectar()->prepare("SELECT *  FROM $tabla");
+        $sql->execute();
+        return $sql->fetchAll();
 
- 		$sql->close();
- 	}
+        $sql->close();
+    }
 
- 	static public function agregarCategoriasModel($datosModel,$tabla){
-     
-      $sql = Conexion::conectar()->prepare("INSERT INTO $tabla (nombreCategoria)VALUES(:nombreCategoria)");
-      $sql->bindParam(':nombreCategoria',$datosModel['nombreCategoria']);
+    public static function agregarCategoriasModel($datosModel, $tabla)
+    {
 
-      if ($sql->execute()) {
-      	return 'success';
-      }
+        $sql = Conexion::conectar()->prepare("INSERT INTO $tabla (nombreCategoria)VALUES(:nombreCategoria)");
+        $sql->bindParam(':nombreCategoria', $datosModel['nombreCategoria']);
 
-      $sql->close();
-      
- 	}
+        if ($sql->execute()) {
+            return 'success';
+        }
 
- 	static public function validarCategoriaModel($datosModel,$tabla){
+        $sql->close();
 
-      $sql = Conexion::conectar()->prepare("SELECT nombreCategoria FROM $tabla WHERE nombreCategoria = :nombreCategoria");
-      $sql->bindParam(':nombreCategoria',$datosModel);
+    }
 
-      $sql->execute();
+    public static function validarCategoriaModel($datosModel, $tabla)
+    {
 
-      return $sql->fetch();
+        $sql = Conexion::conectar()->prepare("SELECT nombreCategoria FROM $tabla WHERE nombreCategoria = :nombreCategoria");
+        $sql->bindParam(':nombreCategoria', $datosModel);
 
-      $sql->close();
-  }
+        $sql->execute();
 
+        return $sql->fetch();
 
- static public function deleteCategoriaModel($datosModel,$tabla){
+        $sql->close();
+    }
 
- 	$sql= Conexion::conectar()->prepare("DELETE FROM $tabla WHERE idCategoria = :idCategoria");
- 	$sql->bindParam(':idCategoria',$datosModel);
+    public static function deleteCategoriaModel($datosModel, $tabla)
+    {
 
- 	if ($sql->execute()) {
- 		return 'success';
- 	}
- 	$sql->close();
- }
+        $sql = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE idCategoria = :idCategoria");
+        $sql->bindParam(':idCategoria', $datosModel);
 
-  static public function editarcategoriaModel($datosModel,$tabla){
-    $sql = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE idCategoria = :idCategoria");
-    $sql->bindParam(":idCategoria",$datosModel);
-    $sql->execute();
+        if ($sql->execute()) {
+            return 'success';
+        }
+        $sql->close();
+    }
 
-    return $sql->fetch();
-    $sql->close();
-   }
+    public static function editarcategoriaModel($datosModel, $tabla)
+    {
+        $sql = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE idCategoria = :idCategoria");
+        $sql->bindParam(":idCategoria", $datosModel);
+        $sql->execute();
 
-    static public function actualizarCategoriaModel($datosModel,$tabla){
+        return $sql->fetch();
+        $sql->close();
+    }
 
-     $sql = Conexion::conectar()->prepare("UPDATE $tabla SET nombreCategoria = :nombreCategoria WHERE idCategoria = :idCategoria");
-     $sql->bindParam(':nombreCategoria',$datosModel['nombreCategoria']);
-     $sql->bindParam(':idCategoria',$datosModel['idCategoria']);
+    public static function actualizarCategoriaModel($datosModel, $tabla)
+    {
 
-     if($sql->execute()){
-       return 'success';
-     }else{
-      return "Error";
-     }
-     $sql->close();
-   }
+        $sql = Conexion::conectar()->prepare("UPDATE $tabla SET nombreCategoria = :nombreCategoria WHERE idCategoria = :idCategoria");
+        $sql->bindParam(':nombreCategoria', $datosModel['nombreCategoria']);
+        $sql->bindParam(':idCategoria', $datosModel['idCategoria']);
 
+        if ($sql->execute()) {
+            return 'success';
+        } else {
+            return "Error";
+        }
+        $sql->close();
+    }
 
- }
+}

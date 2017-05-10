@@ -1,180 +1,152 @@
 <?php
 
-   class  EnlacesPaginas {
+class EnlacesPaginas
+{
 
-	static public function enlacesPaginasModel($get){
-		// 
-		// Páginas de los módulos
-		// 
+    public static function enlacesPaginasModel($get)
+    {
+        //
+        // Páginas de los módulos
+        //
 
-		if( $get == "inicio" OR $get == 'inicioUs'){
+        if ($get == "inicio" or $get == 'inicioUs') {
 
-			$module = "views/modules/".$get.".php";
+            $module = "views/modules/" . $get . ".php";
 
-		 }
-		 // 
-		// Fin de las Páginas
-		// --------------------------------------------------------
-		// 
-	
-		 //  // 
-		//  Páginas DE proveedores
-		// --------------------------------------------------------
-		
-		 else if($get == "proveedores" OR $get == 'okProv'){
+        }
+        //
+        // Fin de las Páginas
+        // --------------------------------------------------------
+        //
 
-			$module = "views/modules/proveedores/proveedores.php";
-		
-	     }
+        //  //
+        //  Páginas DE proveedores
+        // --------------------------------------------------------
 
-	      else if($get == "agragarproveedores" ){
+        else if ($get == "proveedores" or $get == 'okProv') {
 
-			$module = "views/modules/proveedores/proveedores.php";
-		
-	     }
+            $module = "views/modules/proveedores/proveedores.php";
 
+        } else if ($get == "agragarproveedores") {
 
+            $module = "views/modules/proveedores/proveedores.php";
 
-		 // 
-		//  FIN DE proveedores
-		// --------------------------------------------------------
-		  // 
+        }
 
-		//  // 
-		//  Páginas DE Productos
-		// --------------------------------------------------------
-		
-		 else if($get == "productos" ){
+        //
+        //  FIN DE proveedores
+        // --------------------------------------------------------
+        //
 
-			$module = "views/modules/productos/productos.php";
-		
-	     }
+        //  //
+        //  Páginas DE Productos
+        // --------------------------------------------------------
 
-	      else if($get == "agragarproductos" ){
+        else if ($get == "productos") {
 
-			$module = "views/modules/productos/productos.php";
-		
-	     }
-	      else if($get == "okProductos" OR $get == "editadoPro" OR $get == 'inventario' ){
+            $module = "views/modules/productos/productos.php";
 
-				$module = "views/modules/productos/productos.php";
-		
-	     }
+        } else if ($get == "agragarproductos") {
 
+            $module = "views/modules/productos/productos.php";
 
+        } else if ($get == "okProductos" or $get == "editadoPro" or $get == 'inventario') {
 
+            $module = "views/modules/productos/productos.php";
 
-		 // 
-		//  FIN DE Productos
-		// --------------------------------------------------------
-		  // 
-		//  Páginas DE CATEGIRIAS
-		// --------------------------------------------------------
-		
-           else if($get == "categorias" ){
+        }
 
-			$module = "views/modules/categorias/categorias.php";
-		
-	     }
+        //
+        //  FIN DE Productos
+        // --------------------------------------------------------
+        //
+        //  Páginas DE CATEGIRIAS
+        // --------------------------------------------------------
 
-	     else if($get == "agragarCategorias" ){
+        else if ($get == "categorias") {
 
-			$module = "views/modules/categorias/categorias.php";
-		
-	     }
-	      else if($get == "okCategorias" OR $get == "editadoCat" ){
+            $module = "views/modules/categorias/categorias.php";
 
-			$module = "views/modules/categorias/categorias.php";
-		
-	     }
-	     else if($get == "DeletCategorias"){
+        } else if ($get == "agragarCategorias") {
 
-			$module = "views/modules/categorias/categorias.php";
-		
-	     }
-	     else if($get == "editarCat"){
+            $module = "views/modules/categorias/categorias.php";
 
-			$module = "views/modules/categorias/editarCat.php";
-		
-	     }
-		 // 
-		// FIN DE LAS CATEGORIAS
-		// 
-		 // 
-		// Página del login
-		// 
-		 else if($get == "index" ){
+        } else if ($get == "okCategorias" or $get == "editadoCat") {
 
-			$module = "views/modules/ingreso/ingreso.php";
-		
-	     }
+            $module = "views/modules/categorias/categorias.php";
 
-	else if($get == "sesion" ){
+        } else if ($get == "DeletCategorias") {
 
-			$module = "views/modules/ingreso/sesion.php";
-		
-	}
-	else if($get == "robot" ){
+            $module = "views/modules/categorias/categorias.php";
 
-			$module = "views/modules/ingreso/robot.php";
-		
-	}
+        } else if ($get == "editarCat") {
 
-      // -----------------------------------------------
-      // Inicio de los Administradores      
- 
-       else if($get == "config" ){
+            $module = "views/modules/categorias/editarCat.php";
 
-			$module = "views/modules/admin/config.php";
-		
-	}
+        }
+        //
+        // FIN DE LAS CATEGORIAS
+        //
+        //
+        // Página del login
+        //
+        else if ($get == "index") {
 
-	  else if($get == "cambio" ){
+            $module = "views/modules/ingreso/ingreso.php";
 
-			$module = "views/modules/admin/config.php";
-		
-	}
+        } else if ($get == "sesion") {
 
-	 else if($get == "agregado" ){
+            $module = "views/modules/ingreso/sesion.php";
 
-				$module = "views/modules/admin/config.php";
-			
-		}
-		else if($get == "delete" OR $get == 'delet' OR $get == 'editado'){
+        } else if ($get == "robot") {
 
-				$module = "views/modules/admin/config.php";
-			
-		}
-		else if($get == "editar"){
+            $module = "views/modules/ingreso/robot.php";
 
-				$module = "views/modules/admin/editar.php";
-			
-		}
+        }
 
+        // -----------------------------------------------
+        // Inicio de los Administradores
 
-      else if($get == "errorPass"){
+        else if ($get == "config") {
 
-				$module = "views/modules/modals/cambiarPass.php";
-			
-		}
+            $module = "views/modules/admin/config.php";
 
-      // -----------------------------------------------
-      // Fin de los Administradores
- 
-        
-	    // 
-		// Páginas por default
-		// 
-	else{
+        } else if ($get == "cambio") {
 
-			$module = "views/modules/ingreso/ingreso.php";
+            $module = "views/modules/admin/config.php";
 
-		}
+        } else if ($get == "agregado") {
 
-		return $module;
+            $module = "views/modules/admin/config.php";
 
-	}
+        } else if ($get == "delete" or $get == 'delet' or $get == 'editado') {
+
+            $module = "views/modules/admin/config.php";
+
+        } else if ($get == "editar") {
+
+            $module = "views/modules/admin/editar.php";
+
+        } else if ($get == "errorPass") {
+
+            $module = "views/modules/modals/cambiarPass.php";
+
+        }
+
+        // -----------------------------------------------
+        // Fin de los Administradores
+
+        //
+        // Páginas por default
+        //
+        else {
+
+            $module = "views/modules/ingreso/ingreso.php";
+
+        }
+
+        return $module;
+
+    }
 
 }
-
-
