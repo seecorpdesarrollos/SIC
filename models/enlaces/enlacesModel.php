@@ -13,6 +13,10 @@ class EnlacesPaginas
 
             $module = "views/modules/" . $get . ".php";
 
+        } else if ($get == 'ini') {
+
+            $module = "views/modules/inicio.php";
+
         }
         //
         // Fin de las Páginas

@@ -18,31 +18,47 @@
             <div>
             </div>
             <div class="col-lg-7">
-              <p class="font-italic text text-uppercase"><u>Seccíón de inventario.</u></p>
+                <p class="font-italic text text-uppercase">
+                    <u>
+                        Seccíón de inventario.
+                    </u>
+                </p>
                 <div class="card">
                     <div class="card-block">
-                <div class="alert alert-warning" align="center ">
-                    <?php echo date('d-m-Y H:i') ?>
-                </div>
+                        <div class="alert alert-warning" align="center ">
+                            <?php echo date('d-m-Y H:i') ?>
+                        </div>
+                            <?php echo '<div class="alert alert-danger" align="center ">
+                             <strong>Por Favor compruebe el stock</strong>
+                              </div>'; ?>
+                       <center>
+                           <a class="btn btn-outline-primary center" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                <?php echo '<i class="fa fa-plus-circle"></i> Desplegar Aqui' ?>
+                            </a>
+                        </center>
+                        <div class="collapse" id="collapseExample">
+                            <div class="card card-block">
                         <?php foreach ($result as $key): ?>
                         <?php if ($key['existenciaActual'] <= 10): ?>
-                        <div class="alert alert-danger">
-                            <h5>
-                                <strong>
-                                    <?php echo 'Quedan ' . $key['existenciaActual'] . ' unidades de ' . $key['nombreProducto']; ?>
-                                </strong>
-                            </h5>
-                        </div>
+                            <div class="alert alert-danger">
+                                <h5>
+                                    <strong>
+                                        <?php echo 'Quedan ' . $key['existenciaActual'] . ' unidades de ' . $key['nombreProducto']; ?>
+                                    </strong>
+                                </h5>
+                            </div>
                         <?php endif?>
-                        <?php endforeach?>
-                    </div>
+                            <?php endforeach?>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
-        <?php $admin = new Admin();
+    </div>
+    <?php $admin = new Admin();
 $admin->
     fecha();
 ?>
-    </br>
+</br>
 </div>
 </body>

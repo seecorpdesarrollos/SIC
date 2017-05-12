@@ -8,7 +8,7 @@ class ProductosModel
     public static function getProductoModel($tabla)
     {
         $sql = Conexion::conectar()->prepare("SELECT * FROM $tabla ta JOIN proveedores prov ON prov.idProveedor = ta.idProveedor
-   	JOIN categorias cat ON cat.idCategoria = ta.idCategoria ");
+    JOIN categorias cat ON cat.idCategoria = ta.idCategoria ");
         $sql->execute();
 
         return $sql->fetchAll();
@@ -19,7 +19,7 @@ class ProductosModel
     {
 
         $sql = Conexion::conectar()->prepare("INSERT INTO $tabla (nombreProducto,idProveedor,precioProducto,idCategoria)
- 			VALUES(:nombreProducto,:idProveedor,:precioProducto,:idCategoria)");
+            VALUES(:nombreProducto,:idProveedor,:precioProducto,:idCategoria)");
 
         $sql->bindParam(':nombreProducto', $datosModel['nombreProducto']);
         $sql->bindParam(':idProveedor', $datosModel['idProveedor']);
@@ -27,11 +27,21 @@ class ProductosModel
         $sql->bindParam(':idCategoria', $datosModel['idCategoria']);
 
         if ($sql->execute()) {
+// aqui agrega al inventario con el correspondiente idProducto para su relacion
+            $ult = Conexion::conectar()->prepare("SELECT MAX(idProducto)as ID FROM productos");
+            $ult->execute();
+            $res = $ult->fetch();
+            // var_dump($res['ID']);
+            $a = $res['ID'];
+            $sqlInv = Conexion::conectar()->prepare("INSERT INTO inventario(cantidadIngresada, existenciaActual, precioVenta,idProducto)
+                        VALUES(0,0,0,$a)");
+            $sqlInv->execute();
             return 'success';
         } else {
             return 'Error';
 
         }
+
         $sql->close();
     }
 

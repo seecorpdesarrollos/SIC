@@ -41,4 +41,14 @@ class ProductosController
         return $respuesta;
     }
 
+    public function agregarInventarioController()
+    {
+        if (isset($_POST['agregarInventario'])) {
+            $datosController = array('cantidadIngresada' => $_POST['cantidadIngresada'],
+                'precioVenta' => $_POST['precioVenta'],
+                'idProducto' => $_POST['idProducto']);
+            // var_dump($datosController);
+        }
+    }
+
 }

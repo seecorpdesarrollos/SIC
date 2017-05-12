@@ -4,21 +4,26 @@ require_once "../../controllers/admin/adminController.php";
 require_once "../../models/admin/adminModel.php";
 require_once '../../models/conexion.php';
 
-class ImpresionSuscriptores{
+class ImpresionSuscriptores
+{
 
-public function imprimirSuscriptores(){
+    public function imprimirSuscriptores()
+    {
+        date_default_timezone_set('America/Argentina/Buenos_Aires');
+        require_once 'tcpdf_include.php';
 
-require_once 'tcpdf_include.php';
+        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        $pdf->AddPage();
+        $dia = date('d-m-Y H:i');
 
-$pdf->AddPage();
-
-$html1 = <<<EOF
+        $html1 = <<<EOF
 
 <table>
 <tr>
 <td style="width:540px"><img src="images/back.jpg"></td>
+            $dia
+
 </tr>
 
 <tr>
@@ -28,24 +33,22 @@ $html1 = <<<EOF
 </tr>
 </table>
 
-<table style="border: 1px solid #333; text-align:center; line-height: 20px; font-size:10px">
+<table style="border: 1px solid #4AA0F1; text-align:center; line-height: 20px; font-size:10px">
 <tr>
-    <td style="border: 1px solid #666; background-color:#333; color:#fff">Nombre Administrador</td>
-    <td style="border: 1px solid #666; background-color:#333; color:#fff">Rol  Administrador</td>
-    <td style="border: 1px solid #666; background-color:#333; color:#fff">Fecha  Creado</td>
+    <td style="border: 1px solid #666; background-color:#4AA0F1; color:#fff">Nombre Administrador</td>
+    <td style="border: 1px solid #666; background-color:#4AA0F1; color:#fff">Rol  Administrador</td>
+    <td style="border: 1px solid #666; background-color:#4AA0F1; color:#fff">Fecha  Creado</td>
 </tr>
 </table>
 
 EOF;
+        $pdf->writeHTML($html1, false, false, false, false, '');
 
-$pdf->writeHTML($html1, false, false, false, false, '');
+        $respuesta = Admin::imprimirController("administrador");
 
-$respuesta = Admin::imprimirController("administrador");
+        foreach ($respuesta as $item) {
 
-foreach ($respuesta as $item) {
-
-$html2 = <<<EOF
-
+            $html2 = <<<EOF
     <table style="border: 1px solid #333; text-align:center; line-height: 20px; font-size:10px">
         <tr>
             <td style="border: 1px solid #666;">$item[nombreAdmin]</td>
@@ -56,13 +59,13 @@ $html2 = <<<EOF
 
 EOF;
 
-$pdf->writeHTML($html2, false, false, false, false, '');
+            $pdf->writeHTML($html2, false, false, false, false, '');
 
-}
+        }
 
-$pdf->Output('administradores.pdf');
+        $pdf->Output('administradores.pdf');
 
-}
+    }
 
 }
 

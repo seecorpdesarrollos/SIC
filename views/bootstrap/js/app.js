@@ -1,5 +1,7 @@
 $(document).ready(function() {
     var ventana = $(window).width();
+    var ventanas = $(window).height();
+    // console.log(ventanas);
     // console.log(ventana);
     if (ventana <= 700) {
         // console.log(ventana);
