@@ -1,6 +1,6 @@
 <?php
 
-require_once 'models/conexion.php';
+// require_once 'models/conexion.php';
 
 class ProductosModel
 {
@@ -33,8 +33,8 @@ class ProductosModel
             $res = $ult->fetch();
             // var_dump($res['ID']);
             $a = $res['ID'];
-            $sqlInv = Conexion::conectar()->prepare("INSERT INTO inventario(cantidadIngresada, existenciaActual, precioVenta,idProducto)
-                        VALUES(0,0,0,$a)");
+            $sqlInv = Conexion::conectar()->prepare("INSERT INTO inventario(cantidadIngresada, precioVenta,idProducto)
+                        VALUES(0,0,$a)");
             $sqlInv->execute();
             return 'success';
         } else {
@@ -46,6 +46,26 @@ class ProductosModel
     }
 
     public static function getInventarioModel($tabla)
+    {
+        $sql = Conexion::conectar()->prepare("SELECT * FROM $tabla ta JOIN productos pro ON ta.idProducto = pro.idProducto  ");
+        $sql->execute();
+        return $sql->fetchAll();
+        $sql->close();
+    }
+    public static function validarProductoModel($datosModel, $tabla)
+    {
+
+        $sql = Conexion::conectar()->prepare("SELECT nombreProducto FROM $tabla WHERE nombreProducto = :nombreProducto");
+        $sql->bindParam(':nombreProducto', $datosModel);
+
+        $sql->execute();
+
+        return $sql->fetch();
+
+        $sql->close();
+    }
+
+    public static function agregarInventarioModel($tabla)
     {
         $sql = Conexion::conectar()->prepare("SELECT * FROM $tabla ta JOIN productos pro ON ta.idProducto = pro.idProducto  ");
         $sql->execute();

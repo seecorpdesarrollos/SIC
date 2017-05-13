@@ -91,9 +91,7 @@ $p = ProveedoresController::getProveedoresController();
     <!-- Seccion de ingreso a Formulario de nuevos registros de proveedores -->
 
     <?php if ($_GET['action'] == 'agragarproveedores'): ?>
-      <ol class="breadcrumb">
-       <li class="breadcrumb-item active">Agregar Productos</li>
-     </ol>
+      <h1 class="alert alert-warning text-center">Agregar Proveedores</h1>
         <form method="post" onsubmit="return validarCategorias()">
      <div class="row">
       <div class="col-md-6">

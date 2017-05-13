@@ -133,16 +133,16 @@ La Categoria fue Borrada correctamente del sistema.
 <h1 class="alert alert-warning text-center">
     Agregar Productos
 </h1>
-<form method="post" onsubmit="return validarCategorias()">
+<form method="post">
     <div class="row">
         <div class="col-md-6">
-            <div class="form-group">
+            <div class="form-group" id="form">
                 <label for="nombreCategorias">
                     Nombre Productos
                 </label>
                 <input type="text" class="form-control" id="nombreProductos" placeholder="Nombre del Producto"  name="nombreProducto" required=""/>
             </div>
-            <span id="cat">
+            <span id="pro">
             </span>
         </div>
         <div class="col-md-6">
@@ -196,12 +196,12 @@ $a->
 <h5 class="alert alert-warning text-center">
     Seccion de Inventarios
 </h5>
-<form method="post">
+<form method="post" >
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
                 <label for="nombreCategorias" class=text-primary>
-                    Nombre Ciudad
+                   Nombre Productos
                 </label>
                 <select style="width:378px;"  class="chosen-select" name="idProducto">
                     <option>

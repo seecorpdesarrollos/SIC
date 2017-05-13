@@ -33,6 +33,17 @@ class ProductosController
         }
 
     }
+    public function validarProductoController($validarProducto)
+    {
+        $datosController = $validarProducto;
+        $respuesta = ProductosModel::validarProductoModel($datosController, 'productos');
+
+        if ($respuesta) {
+            echo 1;
+        } else {
+            echo 0;
+        }
+    }
 
     public static function getInventarioController()
     {
@@ -47,7 +58,7 @@ class ProductosController
             $datosController = array('cantidadIngresada' => $_POST['cantidadIngresada'],
                 'precioVenta' => $_POST['precioVenta'],
                 'idProducto' => $_POST['idProducto']);
-            // var_dump($datosController);
+            var_dump($datosController);
         }
     }
 

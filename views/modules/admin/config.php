@@ -95,7 +95,7 @@ Has borrado un usuario del sistema.
 <div class="col-lg-12">
     <div class="" id="tabla">
         <table class="table table-bordered table-sm ta" id="tablas">
-            <thead class="bg-info">
+            <thead class="bg-info text-white">
                 <tr>
                     <td align="center">
                         Nombre Admin

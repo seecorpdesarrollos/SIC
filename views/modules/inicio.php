@@ -25,10 +25,10 @@
                 </p>
                 <div class="card">
                     <div class="card-block">
-                        <div class="alert alert-warning" align="center ">
+                        <div class="alert alert-info text-gray-dark" align="center ">
                             <?php echo date('d-m-Y H:i') ?>
                         </div>
-                            <?php echo '<div class="alert alert-danger" align="center ">
+                            <?php echo '<div class="alert alert-warning" align="center ">
                              <strong>Por Favor compruebe el stock</strong>
                               </div>'; ?>
                        <center>
@@ -39,11 +39,11 @@
                         <div class="collapse" id="collapseExample">
                             <div class="card card-block">
                         <?php foreach ($result as $key): ?>
-                        <?php if ($key['existenciaActual'] <= 10): ?>
+                        <?php if ($key['cantidadIngresada'] <= 10): ?>
                             <div class="alert alert-danger">
                                 <h5>
                                     <strong>
-                                        <?php echo 'Quedan ' . $key['existenciaActual'] . ' unidades de ' . $key['nombreProducto']; ?>
+                                        <?php echo 'Quedan ' . $key['cantidadIngresada'] . ' unidades de ' . $key['nombreProducto']; ?>
                                     </strong>
                                 </h5>
                             </div>

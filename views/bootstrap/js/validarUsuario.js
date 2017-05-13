@@ -140,3 +140,42 @@ $("#nombreEmpresa").change(function() {
         }
     })
 });
+// ===================================================================
+// 
+//    validar el registro de las Productos
+// ===================================================================
+// 
+var usuarioExistente = false;
+$("#nombreProductos").change(function() {
+    var producto = $('#nombreProductos').val();
+    console.log(producto);
+    var datos = new FormData();
+    datos.append('inputvalidarProducto', producto);
+    $.ajax({
+        url: 'views/ajax.php',
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(respuesta) {
+            if (respuesta == 1) {
+                $("#pro").html('<p  class="alert alert-danger">El producto ya existe</p>');
+                $('#pro').addClass('a');
+                $("#form").addClass('has-danger');
+                $("#nombreProductos").addClass('form-control form-control-danger');
+                $("#button").attr('disabled', 'disabled');
+                usuarioExistente = true;
+            } else {
+                $("#form").removeClass('has-danger');
+                $("#form").addClass('has-success');
+                $("#nombreProductos").removeClass('form-control form-control-danger');
+                $("#nombreProductos").addClass('form-control form-control-success');
+                $('#nombreProductos').css('border', 'solid 1px #8FF48A');
+                $("#pro").html(respuesta);
+                $("#button").removeAttr('disabled', 'disabled');
+                usuarioExistente = false;
+            }
+        }
+    })
+});
