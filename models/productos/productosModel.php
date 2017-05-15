@@ -8,7 +8,8 @@ class ProductosModel
     public static function getProductoModel($tabla)
     {
         $sql = Conexion::conectar()->prepare("SELECT * FROM $tabla ta JOIN proveedores prov ON prov.idProveedor = ta.idProveedor
-    JOIN categorias cat ON cat.idCategoria = ta.idCategoria ");
+    JOIN categorias cat ON cat.idCategoria = ta.idCategoria
+    JOIN inventario inv ON inv.idProducto = ta.idProducto ");
         $sql->execute();
 
         return $sql->fetchAll();
@@ -44,6 +45,9 @@ class ProductosModel
 
         $sql->close();
     }
+    //////
+    //  INVENTARIO.
+    //////
 
     public static function getInventarioModel($tabla)
     {
@@ -52,24 +56,21 @@ class ProductosModel
         return $sql->fetchAll();
         $sql->close();
     }
-    public static function validarProductoModel($datosModel, $tabla)
+
+    public static function agregarInventarioModel($datosModel, $tabla)
     {
 
-        $sql = Conexion::conectar()->prepare("SELECT nombreProducto FROM $tabla WHERE nombreProducto = :nombreProducto");
-        $sql->bindParam(':nombreProducto', $datosModel);
+        $sql = Conexion::conectar()->prepare(" UPDATE $tabla SET cantidadIngresada=:cantidadIngresada,precioVenta=:precioVenta WHERE idProducto =:idProducto");
 
-        $sql->execute();
+        $sql->bindParam(':cantidadIngresada', $datosModel['cantidad']);
+        $sql->bindParam(':precioVenta', $datosModel['precioVenta']);
+        $sql->bindParam(':idProducto', $datosModel['idProducto']);
+        if ($sql->execute()) {
+            return 'success';
+        } else {
+            return 'Error';
+        }
 
-        return $sql->fetch();
-
-        $sql->close();
-    }
-
-    public static function agregarInventarioModel($tabla)
-    {
-        $sql = Conexion::conectar()->prepare("SELECT * FROM $tabla ta JOIN productos pro ON ta.idProducto = pro.idProducto  ");
-        $sql->execute();
-        return $sql->fetchAll();
         $sql->close();
     }
 

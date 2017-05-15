@@ -5,7 +5,7 @@ $(document).ready(function() {
     if (path == '') {
         path = 'inicio';
     }
-    if (path == 'agragarproductos' || path == 'inventario') {
+    if (path == 'agragarproductos' || path == 'inventario' || path == 'okInventarios') {
         var main = 'productos';
         var target = $('nav a[href="' + main + '"]');
         target.addClass('actives');

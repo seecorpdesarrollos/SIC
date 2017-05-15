@@ -32,10 +32,10 @@
                              <strong>Por Favor compruebe el stock</strong>
                               </div>'; ?>
                        <center>
-                           <a class="btn btn-outline-primary center" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                           <a class="btn btn-outline-primary center animated fadeInDown" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                 <?php echo '<i class="fa fa-plus-circle"></i> Desplegar Aqui' ?>
                             </a>
-                        </center>
+                        </center><br>
                         <div class="collapse" id="collapseExample">
                             <div class="card card-block">
                         <?php foreach ($result as $key): ?>

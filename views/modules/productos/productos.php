@@ -4,20 +4,8 @@
         Sección Productos
     </li>
 </ol>
-<?php if (isset($_GET['action'])) {if ($_GET['action'] == 'okProductos') {echo '  <div id="ok" class="alert alert-success alert-dismissible fade show" role="alert">
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">
-        &times;
-    </span>
-</button>
-<strong>
-    Enorabuena!
-</strong>
-El Producto fue agregado correctamente al sistema.
-</div>
-';
-    echo "  <META HTTP-EQUIV='Refresh' CONTENT='4; URL=productos'/> ";
-}
+<?php if (isset($_GET['action'])) {
+
     if ($_GET['action'] == 'editadoCat') {
         echo '
 <div id="ok" class="alert alert-success alert-dismissible fade show" role="alert">
@@ -33,6 +21,21 @@ La Categoria fue Editada correctamente al Sistema.
 </div>
 ';
         echo "  <META HTTP-EQUIV='Refresh' CONTENT='4; URL=categorias'/> ";
+    }
+    if ($_GET['action'] == 'okInventarios') {
+        echo '<div id="ok"  class="alert alert-success alert-dismissible fade show" role="alert">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">
+        &times;
+    </span>
+</button>
+<strong>
+    Enorabuena!
+</strong>
+El Inventario fue agregado correctamente al sistema.
+</div>
+';
+        echo "  <META HTTP-EQUIV='Refresh' CONTENT='4; URL=productos'/> ";
     }
     if ($_GET['action'] == 'DeletCategorias') {
         echo '
@@ -53,24 +56,24 @@ La Categoria fue Borrada correctamente del sistema.
 }
 ?>
 <div class="row">
-<div class="col-md-3">
+<div class="col-md-2">
     <div class="list-group">
         <a href="productos"  class="list-group-item">
-            Listado Productos
+            <i  class="fa fa-list"></i> Listado
         </a>
         <a href="agragarproductos" class="list-group-item">
-            Productos Nuevos
+           <i  class="fa fa-edit"></i>  Nuevos
         </a>
         <a href="inventario" class="list-group-item">
-            Inventario
+           <i class="fa fa-stack-overflow" aria-hidden="true"></i> Inventario
         </a>
     </div>
 </div>
-<div class="col-md-9">
+<div class="col-md-10">
     <div class="card">
         <div class="card-block">
             <?php if (isset($_GET['action'])): ?>
-            <?php if ($_GET['action'] == 'productos' or $_GET['action'] == 'okProductos' or $_GET['action'] == 'Deletproductos' or $_GET['action'] == 'editarProd' or $_GET['action'] == 'editadoProd'): ?>
+            <?php if ($_GET['action'] == 'productos' or $_GET['action'] == 'okProductos' or $_GET['action'] == 'Deletproductos' or $_GET['action'] == 'editarProd' or $_GET['action'] == 'editadoProd' or $_GET['action'] == 'okInventarios'): ?>
             <h1 class="alert alert-warning text-center">
                 Listado de Productos
             </h1>
@@ -84,10 +87,13 @@ La Categoria fue Borrada correctamente del sistema.
                             Proveedor
                         </td>
                         <td>
-                            Precio
+                            Precio <span class="text-danger">(*)</span>
                         </td>
                         <td>
                             Categoría
+                        </td>
+                        <td>
+                            Stock
                         </td>
                         <td>
                             Acciones
@@ -97,7 +103,7 @@ La Categoria fue Borrada correctamente del sistema.
                 <?php $get = ProductosController::getProductosControllers();?>
                 <?php foreach ($get as $key): ?>
                 <tr>
-                    <td>
+                    <td class='tooltips' data-toggle='tooltip' data-placement='top' title='id Producto :<?php echo $key['idProducto'] ?>'  >
                         <?php echo $key['nombreProducto'] ?>
                     </td>
                     <td>
@@ -109,6 +115,9 @@ La Categoria fue Borrada correctamente del sistema.
                     </td>
                     <td>
                         <?php echo $key['nombreCategoria'] ?>
+                    </td>
+                     <td>
+                        <?php echo $key['cantidadIngresada'] ?>
                     </td>
                     <td align="center">
                         <a href="index.php?action=editarCat&idEditar=  <?php echo $key['idProducto'] ?> ">
@@ -126,6 +135,7 @@ La Categoria fue Borrada correctamente del sistema.
         </div>
     </div>
 </div>
+<span class="text-danger">(*) <small>Es el Precio de Compra.</small></span>
 <?php endif?>
 <!-- Formulario de registro de los productos -->
 <!-- ========================================== -->
@@ -193,9 +203,9 @@ $a->
 <!--  -->
 <!-- Sección de inventarios -->
 <?php if ($_GET['action'] == 'inventario'): ?>
-<h5 class="alert alert-warning text-center">
+<h1 class="alert alert-warning text-center">
     Seccion de Inventarios
-</h5>
+</h1>
 <form method="post" >
     <div class="row">
         <div class="col-md-6">
@@ -203,14 +213,14 @@ $a->
                 <label for="nombreCategorias" class=text-primary>
                    Nombre Productos
                 </label>
-                <select style="width:378px;"  class="chosen-select" name="idProducto">
+                <select style="width:424px;"  class="chosen-select" name="idProducto" id="idProducto">
                     <option>
                         Elegir Producto
                     </option>
                     <?php $a = ProductosController::getProductosControllers();?>
                     <?php foreach ($a as $key): ?>
-                    <option value=" <?php echo $key['idProducto'] ?> ">
-                        <?php echo $key['nombreProducto'] . ' -- ' . $key['nombreEmpresa'] ?>
+                    <option value=" <?php echo $key['idProducto'] . ' / ' . $key['cantidadIngresada'] ?> ">
+                        <?php echo $key['nombreProducto'] ?>
                     </option>
                     <?php endforeach?>
                 </select>
@@ -229,7 +239,7 @@ $a->
                 <label for="precioVenta" class="text-primary">
                     Precio de Venta
                 </label>
-                <input type="number" class="form-control" id="precioVenta" placeholder="Precio de Venta"  name="precioVenta" required=""/>
+                <input type="text" class="form-control" id="precioVenta" placeholder="Precio de Venta"  name="precioVenta" required=""/>
             </div>
         </div>
         <div class="col-md-6">

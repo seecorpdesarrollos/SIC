@@ -172,7 +172,7 @@ $("#nombreProductos").change(function() {
                 $("#nombreProductos").removeClass('form-control form-control-danger');
                 $("#nombreProductos").addClass('form-control form-control-success');
                 $('#nombreProductos').css('border', 'solid 1px #8FF48A');
-                $("#pro").html(respuesta);
+                $("#pro").html('');
                 $("#button").removeAttr('disabled', 'disabled');
                 usuarioExistente = false;
             }

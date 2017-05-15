@@ -19,6 +19,7 @@ class Ajax
     public $validarCategoria;
     public $validarProveedor;
     public $validarProducto;
+    public $validarExistencia;
 
     public function validarUsuarioAjax()
     {
@@ -49,6 +50,7 @@ class Ajax
         $respuesta = ProductosController::validarProductoController($datos);
         echo $respuesta;
     }
+
 }
 
 if (isset($_POST['inputvalidarUsuario'])) {

@@ -33,6 +33,10 @@ class ProductosController
         }
 
     }
+
+    //
+    // INVENTARIO
+    //
     public function validarProductoController($validarProducto)
     {
         $datosController = $validarProducto;
@@ -55,10 +59,20 @@ class ProductosController
     public function agregarInventarioController()
     {
         if (isset($_POST['agregarInventario'])) {
+            $porciones = explode(" / ", $_POST['idProducto']);
             $datosController = array('cantidadIngresada' => $_POST['cantidadIngresada'],
+                'cantidad' => strval($_POST['cantidadIngresada'] + $porciones[1]),
                 'precioVenta' => $_POST['precioVenta'],
-                'idProducto' => $_POST['idProducto']);
-            var_dump($datosController);
+                'idProducto' => $porciones[0]);
+            // var_dump($datosController);
+            // var_dump('id : ' . $porciones[0]); // porción1
+            // var_dump('cantidad : ' . $porciones[1]); // porción2
+            $respuesta = ProductosModel::agregarInventarioModel($datosController, 'inventario');
+            var_dump($respuesta);
+
+            if ($respuesta == 'success') {
+                header('location:okInventarios');
+            }
         }
     }
 

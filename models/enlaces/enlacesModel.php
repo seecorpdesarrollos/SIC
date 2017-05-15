@@ -43,6 +43,25 @@ class EnlacesPaginas
         //
 
         //  //
+        //  Páginas DE ventas
+        // --------------------------------------------------------
+
+        else if ($get == "ventas") {
+
+            $module = "views/modules/ventas/ventas.php";
+
+        } else if ($get == "agragarventas") {
+
+            $module = "views/modules/ventas/ventas.php";
+
+        }
+
+        //
+        //  FIN DE ventas
+        // --------------------------------------------------------
+        //
+
+        //  //
         //  Páginas DE Productos
         // --------------------------------------------------------
 
@@ -51,6 +70,10 @@ class EnlacesPaginas
             $module = "views/modules/productos/productos.php";
 
         } else if ($get == "agragarproductos") {
+
+            $module = "views/modules/productos/productos.php";
+
+        } else if ($get == "okInventarios") {
 
             $module = "views/modules/productos/productos.php";
 

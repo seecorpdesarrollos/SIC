@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2017 a las 03:25:36
+-- Tiempo de generación: 15-05-2017 a las 04:32:00
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -61,8 +61,8 @@ CREATE TABLE `categorias` (
 
 INSERT INTO `categorias` (`idCategoria`, `nombreCategoria`) VALUES
 (1, 'carne vacuna'),
-(2, 'carne Porcina'),
-(4, 'Carne AvÃ­cola');
+(4, 'Carne Avícola'),
+(5, 'carne cerdo');
 
 -- --------------------------------------------------------
 
@@ -23099,9 +23099,19 @@ CREATE TABLE `detalles` (
 CREATE TABLE `inventario` (
   `idInventario` int(11) NOT NULL,
   `cantidadIngresada` int(11) NOT NULL,
-  `existenciaActual` int(11) NOT NULL,
+  `precioVenta` double NOT NULL,
   `idProducto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `inventario`
+--
+
+INSERT INTO `inventario` (`idInventario`, `cantidadIngresada`, `precioVenta`, `idProducto`) VALUES
+(1, 14, 78, 2),
+(2, 24, 490, 4),
+(12, 11, 72, 24),
+(13, 11, 48.82, 25);
 
 -- --------------------------------------------------------
 
@@ -23158,8 +23168,9 @@ CREATE TABLE `productos` (
 
 INSERT INTO `productos` (`idProducto`, `nombreProducto`, `idProveedor`, `precioProducto`, `idCategoria`) VALUES
 (2, 'media res', 11, 72, 1),
-(3, 'Capon', 13, 62, 2),
-(4, 'CajÃ³n  de pollo ', 13, 480.7, 4);
+(4, 'Cajón  de pollo ', 13, 480.7, 4),
+(24, 'mocho', 13, 63, 1),
+(25, 'cuarto delanteros', 11, 35, 1);
 
 -- --------------------------------------------------------
 
@@ -23339,7 +23350,7 @@ ALTER TABLE `administrador`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
@@ -23354,7 +23365,7 @@ ALTER TABLE `detalles`
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  MODIFY `idInventario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idInventario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `pass`
 --
@@ -23364,7 +23375,7 @@ ALTER TABLE `pass`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
 --
