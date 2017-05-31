@@ -20,6 +20,15 @@ $(document).ready(function() {
         var target = $('nav a[href="' + main + '"]');
         target.addClass('actives');
     }
+    if (path == 'ventas' || path == 'detalles' || path == 'factura') {
+        var target = $(' a[href="' + path + '"]');
+        target.addClass('active');
+    }
+    if (path == 'detalles' || path == 'factura') {
+        var main = 'ventas';
+        var target = $('nav a[href="' + main + '"]');
+        target.addClass('actives');
+    }
     var cat = $('.list-group a[href="' + path + '"]');
     var target = $('nav a[href="' + path + '"]');
     target.addClass('actives');

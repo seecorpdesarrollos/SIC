@@ -6,6 +6,7 @@ $(document).ready(function() {
     if (ventana <= 700) {
         // console.log(ventana);
         $('#tablas').addClass('table-responsive');
+        $('#ventas').addClass('table-responsive');
         $('#tablas').removeClass('dataTable');
         $('.fa').removeClass('btn');
         $('.dropdown').removeClass('navbar-toggler-right');
@@ -19,6 +20,7 @@ $(function() {
 });
 $('#ok').hide(8000);
 $('#password').modal('show');
+$('#noCliente').modal('show');
 $('#editar').modal('show');
 $('#editarCat').modal('show');
 $('#tablas').DataTable({
@@ -60,4 +62,7 @@ $(function() {
 });
 $(".chosen-select").chosen({
     no_results_text: "Oops, No hay coincidencias!"
+});
+$("#enviar").click(function() {
+    $("div#myPrintArea").printArea();
 });

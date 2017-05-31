@@ -4,11 +4,12 @@ require_once '../controllers/admin/adminController.php';
 require_once '../controllers/categorias/categoriasController.php';
 require_once '../controllers/proveedores/proveedoresController.php';
 require_once '../controllers/productos/productosController.php';
+require_once '../controllers/ventas/ventasController.php';
 
 require_once '../models/admin/adminModel.php';
 require_once '../models/categorias/categoriasModel.php';
 require_once '../models/proveedores/proveedoresModel.php';
-require_once '../models/productos/productosModel.php';
+require_once '../models/ventas/ventasModel.php';
 
 require_once '../models/conexion.php';
 
@@ -19,7 +20,6 @@ class Ajax
     public $validarCategoria;
     public $validarProveedor;
     public $validarProducto;
-    public $validarExistencia;
 
     public function validarUsuarioAjax()
     {
@@ -46,6 +46,14 @@ class Ajax
     public function validarProductoAjax()
     {
         $datos = $this->validarProveedor;
+
+        $respuesta = ProductosController::validarProductoController($datos);
+        echo $respuesta;
+    }
+
+    public function validarExistenciaAjax()
+    {
+        $datos = $this->validarExistencia;
 
         $respuesta = ProductosController::validarProductoController($datos);
         echo $respuesta;

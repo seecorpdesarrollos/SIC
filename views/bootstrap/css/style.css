@@ -23,7 +23,67 @@ body {
     background: #fff;
 }
 
-#tablas {
+.ventas {
+    color: #fff;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+.ventabtn {
+    background-color: #fff;
+    border: 1px solid #F3F55C;
+    color: #9D9EA4;
+}
+
+.ventabtn:hover {
+    background-color: #F3F55C;
+    color: #fff;
+}
+
+#disabledTextInput, #iva, #sub, #numVentas, #fecha, #numFac {
+    background-color: #103B6C;
+    color: #fff;
+}
+
+#disabledTextInput::-webkit-input-placeholder {
+    color: orange;
+}
+
+#disabledTextInput::-moz-input-placeholder {
+    color: orange;
+}
+
+#iva::-webkit-input-placeholder {
+    color: orange;
+}
+
+#iva::-moz-input-placeholder {
+    color: orange;
+}
+
+#sub::-webkit-input-placeholder {
+    color: orange;
+}
+
+#sub::-moz-input-placeholder {
+    color: orange;
+}
+
+#numFac::-webkit-input-placeholder {
+    color: orange;
+}
+
+#numFac::-moz-input-placeholder {
+    color: orange;
+}
+
+.main {
+    border: 2px solid #d0d0d0;
+    box-shadow: 0 0 8px #d0d0d0;
+    padding: 5px;
+}
+
+#tablas, .sale {
     padding: 20px;
     border: 2px solid #d0d0d0;
     border-radius: 4px;
@@ -87,7 +147,7 @@ hr {
 
 footer {
     position: fixed;
-    bottom: 3px;
+    bottom: 0;
     width: 100%;
     text-align: center;
     color: #fff;
@@ -112,6 +172,11 @@ thead {
     border-bottom: 1px solid #67ed60;
     border-radius: 3px;
     background: #4f4e4e;
+}
+
+#tabla {
+    overflow-x: scroll;
+    height: 300px;
 }
 
 @media screen and (max-width: 1000px) {

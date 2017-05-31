@@ -36,7 +36,7 @@
                                 <?php echo '<i class="fa fa-plus-circle"></i> Desplegar Aqui' ?>
                             </a>
                         </center><br>
-                        <div class="collapse" id="collapseExample">
+                        <div class="collapse" id="collapseExample" style="width:600px; height:80px; overflow: scroll;
                             <div class="card card-block">
                         <?php foreach ($result as $key): ?>
                         <?php if ($key['cantidadIngresada'] <= 10): ?>
@@ -47,8 +47,11 @@
                                     </strong>
                                 </h5>
                             </div>
-                        <?php endif?>
+                                    <?php endif?>
                             <?php endforeach?>
+                            <div class="alert alert-success" role="alert">
+                                <strong>OK</strong> stock disponibles.
+                            </div>
                             </div>
                         </div>
                 </div>

@@ -1,4 +1,8 @@
-<?php session_start();if (!$_SESSION["nombreAdmin"]) {header("location:ingreso");exit();}?>
+<?php session_start();
+if (!$_SESSION["nombreAdmin"]) {
+    header("location:ingreso");exit();
+}
+?>
 <ol class="breadcrumb">
     <li class="breadcrumb-item active">
         Sección Productos
@@ -35,7 +39,7 @@ La Categoria fue Editada correctamente al Sistema.
 El Inventario fue agregado correctamente al sistema.
 </div>
 ';
-        echo "  <META HTTP-EQUIV='Refresh' CONTENT='4; URL=productos'/> ";
+        echo "  <META HTTP-EQUIV='Refresh' CONTENT='4; URL=inventario'/> ";
     }
     if ($_GET['action'] == 'DeletCategorias') {
         echo '
@@ -73,11 +77,11 @@ La Categoria fue Borrada correctamente del sistema.
     <div class="card">
         <div class="card-block">
             <?php if (isset($_GET['action'])): ?>
-            <?php if ($_GET['action'] == 'productos' or $_GET['action'] == 'okProductos' or $_GET['action'] == 'Deletproductos' or $_GET['action'] == 'editarProd' or $_GET['action'] == 'editadoProd' or $_GET['action'] == 'okInventarios'): ?>
+            <?php if ($_GET['action'] == 'productos' or $_GET['action'] == 'okProductos' or $_GET['action'] == 'Deletproductos' or $_GET['action'] == 'editarProd' or $_GET['action'] == 'editadoProd'): ?>
             <h1 class="alert alert-warning text-center">
                 Listado de Productos
             </h1>
-            <table class="table table-striped table-sm" id="tablas">
+            <table class="table table-bordered table-sm" id="tablas">
                 <thead class="badge-warning actives">
                     <tr>
                         <td>
@@ -87,7 +91,7 @@ La Categoria fue Borrada correctamente del sistema.
                             Proveedor
                         </td>
                         <td>
-                            Precio <span class="text-danger">(*)</span>
+                            Precio<span class="text-danger">(*)</span>
                         </td>
                         <td>
                             Categoría
@@ -165,8 +169,7 @@ La Categoria fue Borrada correctamente del sistema.
                         Elegir Proveedor
                     </option>
                     <?php $b = new ProveedoresController();
-$b->
-    getProveedoresSelectController();
+$b->getProveedoresSelectController();
 ?>
                 </select>
             </div>
@@ -189,8 +192,7 @@ $b->
                         Elegir Categorías
                     </option>
                     <?php $a = new categoriasController;
-$a->
-    getCategoriasSelectController();?>
+$a->getCategoriasSelectController();?>
                 </select>
             </div>
         </div>
@@ -202,56 +204,36 @@ $a->
 <?php endif?>
 <!--  -->
 <!-- Sección de inventarios -->
-<?php if ($_GET['action'] == 'inventario'): ?>
+<?php if ($_GET['action'] == 'inventario' or $_GET['action'] == 'okInventarios'): ?>
 <h1 class="alert alert-warning text-center">
     Seccion de Inventarios
 </h1>
-<form method="post" >
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="nombreCategorias" class=text-primary>
-                   Nombre Productos
-                </label>
-                <select style="width:424px;"  class="chosen-select" name="idProducto" id="idProducto">
-                    <option>
-                        Elegir Producto
-                    </option>
-                    <?php $a = ProductosController::getProductosControllers();?>
-                    <?php foreach ($a as $key): ?>
-                    <option value=" <?php echo $key['idProducto'] . ' / ' . $key['cantidadIngresada'] ?> ">
-                        <?php echo $key['nombreProducto'] ?>
-                    </option>
-                    <?php endforeach?>
-                </select>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="cantidadIngresada" class="text-primary">
-                    Cantidad de Unidades
-                </label>
-                <input type="number" class="form-control" id="cantidadIngresada" placeholder="Cantidad de Unidades"  name="cantidadIngresada" required=""/>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="precioVenta" class="text-primary">
-                    Precio de Venta
-                </label>
-                <input type="text" class="form-control" id="precioVenta" placeholder="Precio de Venta"  name="precioVenta" required=""/>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="precioVenta" class="text-primary">
-<br>
-                </label>
-                <input type="submit" class="btn btn-outline-danger btn-block"  name="agregarInventario" />
-            </div>
-        </div>
-    </div>
-</form>
+<?php require 'views/modules/modals/agregarInventario.php';?>
+<div class="text-center">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agregarInventario">
+      Launch demo modal
+    </button>
+</div>
+<div class="tablas">
+
+  <table class="table table-bordered table-sm" id="tablas">
+      <thead class="bg-primary text-white">
+          <tr>
+              <th class="text-md-center">Nombre Producto</th>
+              <th class="text-md-center">Cantidad Stock</th>
+              <th class="text-md-center">Precio Venta</th>
+          </tr>
+      </thead>
+      <?php $inv = ProductosController::getInventarioController();?>
+      <?php foreach ($inv as $inventario): ?>
+          <tr>
+              <td class="text-md-center"><?php echo $inventario['nombreProducto'] ?></td>
+              <td class="text-md-center"><?php echo $inventario['cantidadIngresada'] ?></td>
+              <td class="text-md-center"><?php echo $inventario['precioVenta'] ?></td>
+          </tr>
+      <?php endforeach?>
+  </table>
+</div>
 </div>
 </div>
 <?php endif?>

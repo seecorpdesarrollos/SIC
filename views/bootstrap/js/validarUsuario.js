@@ -148,7 +148,7 @@ $("#nombreEmpresa").change(function() {
 var usuarioExistente = false;
 $("#nombreProductos").change(function() {
     var producto = $('#nombreProductos').val();
-    console.log(producto);
+    // console.log(producto);
     var datos = new FormData();
     datos.append('inputvalidarProducto', producto);
     $.ajax({

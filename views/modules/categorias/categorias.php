@@ -28,7 +28,8 @@ if (isset($_GET['action'])) {
 <strong>
     Enorabuena!
 </strong>
-La Categoria fue agregada correctamente.';
+La Categoria fue agregada correctamente.
+</div>';
         echo '<meta http-equiv="Refresh" content="4;URL = categorias" >';
     }
     if ($_GET['action'] == 'editadoCat') {

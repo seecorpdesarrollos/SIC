@@ -1,30 +1,5 @@
 <?php
 
-//============================================================+
-// File name   : example_001.php
-// Begin       : 2008-03-04
-// Last Update : 2013-05-14
-//
-// Description : Example 001 for TCPDF class
-//               Default Header and Footer
-//
-// Author: Nicola Asuni
-//
-// (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
-//============================================================+
-
-/**
- * Creates an example PDF TEST document using TCPDF
- * @package com.tecnick.tcpdf
- * @abstract TCPDF - Example: Default Header and Footer
- * @author Nicola Asuni
- * @since 2008-03-04
- */
-
 // Include the main TCPDF library (search for installation path).
 require_once 'tcpdf_include.php';
 
@@ -47,13 +22,12 @@ $pdf->SetFont('', '', 11, '', true);
 $pdf->AddPage();
 
 // set text shadow effect
-$pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => array(196, 196, 196), 'opacity' => 1, 'blend_mode' => 'Normal'));
 
 // Set some content to print
 
 $html = <<<EOF
 
-<img src="images/logo_example.jpg" style="width:300px">
+
 
 EOF;
 
