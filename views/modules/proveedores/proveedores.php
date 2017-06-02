@@ -139,7 +139,7 @@ $a = ProveedoresController::getCiudadController()
           <input type="text" class="form-control" id="direccionProveedor" placeholder="dirección del la Empresa"  name="direccionProveedor" required="">
         </div>
       </div>
-                <input type="submit" name="agragarProveedor" id="button" value="Agregar Productos" class="btn btn-outline-danger center" id="button">
+                <input type="submit" name="agragarProveedor" id="button" value="Agregar Proveedor" class="btn btn-outline-danger center" id="button">
         </form>
      </div>
   </div>

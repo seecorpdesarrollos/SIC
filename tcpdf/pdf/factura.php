@@ -30,66 +30,65 @@ class ImprimirVentas
         $numFac = $_GET['numFac'];
         $sql = Conexion::conectar()->prepare("SELECT *  FROM factura fa
         JOIN clientes cli ON fa.idCliente=cli.idCliente
-        JOIN provincia pro ON cli.idProvincia=pro.idProvincia
-        JOIN ciudad ciu ON ciu.idProvincia=pro.idProvincia
+        JOIN ciudad ciu ON ciu.idCiudad=cli.idCiudad
+        JOIN provincia prov ON prov.idProvincia=cli.idProvincia
             WHERE numFac=$numFac");
         $sql->execute();
         $result = $sql->fetchAll();
         foreach ($result as $resultado) {
             $fecha = $resultado['fechaVenta'];
             $fechas = date('d-m-Y', strtotime($fecha));
-        }
-        define('PDF_HEADER_STRINGT', " Incar s.r.l - www.diegopennisi.es \n Fecha: $fechas  \n Hora : $hora \n");
+            define('PDF_HEADER_STRINGT', " Incar s.r.l - www.diegopennisi.es \n Fecha: $fechas  \n Hora : $hora \n");
 // set default header data
-        $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE . '  ' . $numFac, PDF_HEADER_STRINGT, array(5, 64, 255), array(9, 64, 128));
-        $pdf->setFooterData(array(0, 64, 0), array(0, 64, 128));
+            $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE . '  ' . $numFac, PDF_HEADER_STRINGT, array(5, 64, 255), array(9, 64, 128));
+            $pdf->setFooterData(array(0, 64, 0), array(0, 64, 128));
 
 // set header and footer fonts
-        $pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-        $pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+            $pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+            $pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
 
 // set default monospaced font
-        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+            $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
 // set margins
-        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+            $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+            $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+            $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
 // set auto page breaks
-        $pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
+            $pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
 
 // set image scale factor
-        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+            $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
 // set some language-dependent strings (optional)
-        if (@file_exists(dirname(__FILE__) . '/lang/spa.php')) {
-            require_once dirname(__FILE__) . '/lang/spa.php';
-            $pdf->setLanguageArray($l);
+            if (@file_exists(dirname(__FILE__) . '/lang/spa.php')) {
+                require_once dirname(__FILE__) . '/lang/spa.php';
+                $pdf->setLanguageArray($l);
 
-        }
+            }
 
 // ---------------------------------------------------------
 
 // set default font subsetting mode
-        $pdf->setFontSubsetting(true);
+            $pdf->setFontSubsetting(true);
 
 // Set font
-        // dejavusans is a UTF-8 Unicode font, if you only need to
-        // print standard ASCII chars, you can use core fonts like
-        // helvetica or times to reduce file size.
-        $pdf->SetFont('', '', 12, '', true);
+            // dejavusans is a UTF-8 Unicode font, if you only need to
+            // print standard ASCII chars, you can use core fonts like
+            // helvetica or times to reduce file size.
+            $pdf->SetFont('', '', 12, '', true);
 
 // Add a page
-        // This method has several options, check the source code documentation for more information.
-        $pdf->AddPage();
+            // This method has several options, check the source code documentation for more information.
+            $pdf->AddPage();
 
 // set text shadow effect
-        $pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => array(196, 196, 196), 'opacity' => 1, 'blend_mode' => 'Normal'));
+            $pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => array(196, 196, 196), 'opacity' => 1, 'blend_mode' => 'Normal'));
 
 // Set some content to print
-        $ciudad = strtolower($resultado[nombreCiudad]);
-        $html = <<<EOD
+            $ciudad = strtolower($resultado[nombreCiudad]);
+            $html = <<<EOD
         <div  style="border: 1px solid #c9c9c9">
        <table>
         <tr>
@@ -128,6 +127,7 @@ class ImprimirVentas
     </table>
 EOD;
 
+        }
         $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
         // $respuesta = Admin::imprimirController("administrador");
         // $respuesta = VentasController::imprimirVentasController($numFac);

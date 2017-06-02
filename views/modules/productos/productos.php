@@ -211,7 +211,7 @@ $a->getCategoriasSelectController();?>
 <?php require 'views/modules/modals/agregarInventario.php';?>
 <div class="text-center">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agregarInventario">
-      Launch demo modal
+      Agregar Stock
     </button>
 </div>
 <div class="tablas">

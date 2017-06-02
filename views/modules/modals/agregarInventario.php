@@ -14,7 +14,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="nombreCategorias" class=text-primary>
-                   Nombre Productos
+                   Nombre Productos <small class="text-gray-dark">(Opcinal)</small>
                 </label>
                 <select class="form-control" name="idProducto" id="idProducto">
                     <option>
@@ -32,7 +32,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="cantidadIngresada" class="text-primary">
-                    Cantidad de Unidades
+                    Cantidad de Unidades <small class="text-gray-dark">(Obligatorio)</small>
                 </label>
                 <input type="number" class="form-control" id="cantidadIngresada" placeholder="Cantidad de Unidades"  name="cantidadIngresada" required=""/>
             </div>
@@ -40,9 +40,9 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="precioVenta" class="text-primary">
-                    Precio de Venta
+                    Precio de Venta <small class="text-gray-dark">(Opcinal)</small>
                 </label>
-                <input type="text" class="form-control" id="precioVenta" placeholder="Precio de Venta"  name="precioVenta" required=""/>
+                <input type="text" class="form-control" id="precioVenta" placeholder="Precio de Venta"  name="precioVenta" />
             </div>
         </div>
         <div class="col-md-6">
@@ -57,7 +57,7 @@
 </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary actives btn-sm" data-dismiss="modal">Close</button>
         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
       </div>
     </div>

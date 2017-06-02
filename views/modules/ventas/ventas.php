@@ -67,12 +67,12 @@ array_push($array, $prod);
                                 <i class="fa fa-search fa-fw" aria-hidden="true">
                                 </i>
                         </span>
+                                <?php $cli = ClientesController::getClientesController();?>
                              <select style="width:356px;"  class="chosen-select"  id="clientes">
                                 <option value="">Clientes</option>
-                                <option value="2">Diego</option>
-                                <option value="3">Alexis</option>
-                                <option value="4">David</option>
-                                <option value="5">Emanuel</option>
+                                <?php foreach ($cli as $cliente): ?>
+                                <option value="<?php echo $cliente['idCliente']; ?>"><?php echo $cliente['nombreCliente'], ' ' . $cliente['apellidoCliente']; ?></option>
+                                <?php endforeach?>
                             </select>
                         </div>
                     </div>
@@ -379,7 +379,7 @@ La Factura fue Borrada  correctamente.
     <tr>
         <td align="center"><?php echo $key['numFac'] ?></td>
         <td align="center"><?php echo date('d-m-Y', strtotime($key['fechaVenta'])) ?></td>
-        <td align="center"><?php echo $key['nombreCliente'] ?></td>
+        <td align="center"><?php echo $key['nombreCliente'] . ' ' . $key['apellidoCliente'] ?></td>
         <td align="center"><?php echo $key['totalVenta'] ?></td>
         <td align="center"><a href="#" onclick="abrirVentana('tcpdf/pdf/factura.php?numFac=<?php echo $key['numFac'] ?>')"
          class="btn btn-outline-info btn-sm"><i class="fa fa-download"></i></a>
@@ -458,7 +458,7 @@ La Factura fue Borrada  correctamente.
  });
 
 function abrirVentana(url) {
-    window.open(url, "Factura", "directories=no, location=no, menubar=no, scrollbars=yes, statusbar=no, tittlebar=no, width=900, height=800");
+    window.open(url, "Factura", "directories=no, location=no, menubar=no, scrollbars=yes, statusbar=no, tittlebar=no, width=900, height=800 ,left=220");
 }
 
 </script>
