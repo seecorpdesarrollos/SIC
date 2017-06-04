@@ -92,7 +92,7 @@ class ImprimirVentas
         <div  style="border: 1px solid #c9c9c9">
        <table>
         <tr>
-          <td style="width:540px">Cliente: $resultado[nombreCliente]</td>
+          <td style="width:540px">Cliente: $resultado[nombreCliente]  $resultado[apellidoCliente]</td>
         </tr>
          <tr>
           <td style="width:540px">Direccion: $resultado[direccion]</td>

@@ -60,7 +60,7 @@ class categoriasModel
         $sql->bindParam(":idCategoria", $datosModel);
         $sql->execute();
 
-        return $sql->fetch();
+        return $sql->fetchAll();
         $sql->close();
     }
 

@@ -32,6 +32,12 @@
                     Ventas
                 </a>
             </li>
+             <li class="nav-item active">
+                <a class="nav-link" href="clientes">
+                    Clientes
+                </a>
+            </li>
+            <!-- user -->
             <li class="nav-item dropdown navbar-toggler-right active">
                 <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle animated bounceInDown" data-toggle="dropdown" href="config" id="navbarDropdownMenuLink">
                     <span class="usu">
@@ -62,7 +68,9 @@
     </div>
 </nav>
 <?php else: ?>
-<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+
+    <!-- No adinistrador  -->
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse nav">
     <button aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right" data-target="#navbarNavDropdown" data-toggle="collapse" type="button">
         <span class="navbar-toggler-icon">
         </span>
@@ -73,7 +81,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="categorias">
+                <a class="nav-link" href="categorias" id="cate">
                     Categorías
                     <span class="sr-only">
                         (current)
@@ -90,6 +98,17 @@
                     Proveedores
                 </a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="ventas">
+                    Ventas
+                </a>
+            </li>
+             <li class="nav-item active">
+                <a class="nav-link" href="clientes">
+                    Clientes
+                </a>
+            </li>
+            <!-- user -->
             <li class="nav-item dropdown navbar-toggler-right active">
                 <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle animated bounceInDown" data-toggle="dropdown" href="https://diegopennisi.es" id="navbarDropdownMenuLink">
                     <span class="usu">

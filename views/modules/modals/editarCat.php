@@ -6,30 +6,34 @@
                 <h5 class="modal-title" id="exampleModalLabel">
                     <i class="fa fa-edit">
                     </i>
-                    Editar Categoria
+                    Editar Categorias
                 </h5>
                 <span aria-hidden="true">
                     ×
                 </span>
             </div>
+ <div class="modal-body">
+    <form method="post">
+        <?php $cat = categoriasController::editarCategoriaController();?>
+         <div class="form-group">
+            <label for="recipient-name" class="form-control-label">Nombre Usuario:</label>
+          <?php foreach ($cat as $resp): ?>
+            <input type="text" class="form-control" id="recipient-name" name="nombreCategoria" value=" <?php echo $resp['nombreCategoria'] ?> ">
+          </div>
+            <input type="hidden" name="idCategoria" value="<?php echo $resp['idCategoria']; ?>">
+          <?php endforeach?>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" name="editarCat">Editar Usuario</button>
         </div>
+    </form>
+        </div>
+ </div>
     </div>
 </div>
-<div class="modal-body">
-    <form method="post">
-        <?php 
-           $edit = new categoriasController();
-           $edit->
-        editarCategoriaController();
-           
- 
-            ?>
-    </form>
-</div>
-<?php 
- 
- $actualizarCat = new categoriasController();
-$actualizarCat->
-actualizarCategoriaController();
- 
- ?>
+<?php
+
+$actualizarCat = new categoriasController();
+$actualizarCat->actualizarCategoriaController();
+
+?>

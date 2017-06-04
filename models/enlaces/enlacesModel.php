@@ -43,6 +43,24 @@ class EnlacesPaginas
         //
 
         //  //
+        //  Páginas DE Clientes
+        // --------------------------------------------------------
+
+        else if ($get == "clientes" or $get == 'okClientes' or $get == 'agragarclientes' or $get == 'editClientes' or $get == 'okClientesEdit' or $get == 'baja' or $get == 'alta') {
+
+            $module = "views/modules/clientes/clientes.php";
+
+        } else if ($get == "verClientes") {
+
+            $module = "views/modules/clientes/verClientes.php";
+
+        }
+
+        //
+        //  FIN DE clientes
+        // --------------------------------------------------------
+        //
+        //  //
         //  Páginas DE ventas
         // --------------------------------------------------------
 

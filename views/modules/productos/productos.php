@@ -5,7 +5,7 @@ if (!$_SESSION["nombreAdmin"]) {
 ?>
 <ol class="breadcrumb">
     <li class="breadcrumb-item active">
-        Sección Productos
+        Sección de Productos
     </li>
 </ol>
 <?php if (isset($_GET['action'])) {
@@ -238,9 +238,7 @@ $a->getCategoriasSelectController();?>
 </div>
 <?php endif?>
 <?php endif?>
-<?php $admin = new Admin();
-$admin->
-    fecha();
+<?php
 $re = new ProductosController();
 $re->registroProductosController();
 $re->agregarInventarioController();

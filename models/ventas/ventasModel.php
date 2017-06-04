@@ -77,17 +77,17 @@ class VentasModel
                 return 'success';
             }
         }
-        // // $resu->close();
-        $cedulaSql = Conexion::conectar()->prepare('SELECT idCliente FROM temp te
-            WHERE idCliente = :idCliente');
-        $cedulaSql->execute(array(':idCliente' => $datosModel['idCliente']));
+        $cedulaSql = Conexion::conectar()->prepare('SELECT idCliente,tipoFactura FROM temp te
+            WHERE idCliente = :idCliente AND tipoFactura=:tipoFactura');
+        $cedulaSql->execute(array(':idCliente' => $datosModel['idCliente'],
+            ':tipoFactura' => $datosModel['tipoFactura']));
         $res = $cedulaSql->fetch();
 
         if (!$res) {
             return 'noCliente';
 
         }
-        // $res->close();
+
         // // actualiza el inventario
         // //
         $unidad = $datosModel['unidad'];
@@ -118,6 +118,7 @@ class VentasModel
         }
         $sql->close();
     }
+
     public static function registrarVentasDetallesModel($datosModel, $tabla, $idAdmin, $numFac)
     {
         $sql = Conexion::conectar()->prepare("INSERT INTO $tabla(idCliente,idProducto,fechaVenta,precioVenta,cantidadKilos,totalVenta,numFac,tipoFactura)SELECT tem.idCliente,tem.idProducto,tem.fechaVenta,tem.precioVenta,tem.cantidad,tem.totalVenta,tem.numFac,tem.tipoFactura

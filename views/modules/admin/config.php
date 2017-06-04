@@ -1,3 +1,5 @@
+<?php require 'views/modules/modals/verClientesNoActivos.php';?>
+
 <ol class="breadcrumb">
     <li class="breadcrumb-item active animated fadeInRight">
         Listado de Usuarios del Sistema
@@ -7,7 +9,10 @@
     Agragar nuevo Usuario
 </button> -->
 <div class="btn-group float-lg-right" role="group" aria-label="Basic example">
-    <button class="btn btn-outline-danger" data-target="#ingresar" data-toggle="modal" type="button"">
+    <button class="btn btn-outline-danger" data-target="#verClienteNoActivo" data-toggle="modal" type="button"">
+        <i class="fa fa-edit"></i> Clientes no Activos
+    </button>
+<button class="btn btn-outline-danger" data-target="#ingresar" data-toggle="modal" type="button"">
         <i class="fa fa-edit"></i> Agragar Usuario
     </button>
     <a href="tcpdf/pdf/administradores.php" target="blank">

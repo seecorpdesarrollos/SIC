@@ -19,6 +19,7 @@ $(function() {
     $('[data-toggle="tooltip"]').tooltip()
 });
 $('#ok').hide(8000);
+$('#verCliente').modal('show');
 $('#password').modal('show');
 $('#noCliente').modal('show');
 $('#editar').modal('show');
@@ -65,4 +66,4 @@ $(".chosen-select").chosen({
 });
 $("#enviar").click(function() {
     $("div#myPrintArea").printArea();
-});
+})

@@ -41,7 +41,7 @@ class Admin
 
         $hoy = date('Y-m-d');
         if ($hoy >= $respuesta->cambiar) {
-            // echo "cambie el password";
+            echo "cambie el password";
             require 'views/modules/modals/cambiarPass.php';
         }
     }

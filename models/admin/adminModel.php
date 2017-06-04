@@ -42,7 +42,7 @@ class AdminModel
     public static function fecha($tabla, $id)
     {
 
-        $sql = Conexion::conectar()->prepare("SELECT INTERVAL 90 DAY +  fechaCreado AS cambiar , idAdmin FROM $tabla WHERE idAdmin = $id");
+        $sql = Conexion::conectar()->prepare("SELECT INTERVAL 25 DAY +  fechaCreado AS cambiar , idAdmin FROM $tabla WHERE idAdmin = $id");
         $sql->execute();
         return $sql->fetch(PDO::FETCH_OBJ);
         $sql->close();

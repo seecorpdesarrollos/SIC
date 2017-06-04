@@ -27,16 +27,6 @@ class categoriasController
         }
     }
 
-    public function getCategoriasGraficoController()
-    {
-
-        $respuesta = categoriasModel::getCategoriasModel('categorias');
-        foreach ($respuesta as $key) {
-            echo $key['nombreCategoria'];
-            echo $key['total'];
-        }
-    }
-
     public function agregarCategoriasController()
     {
         if (isset($_POST['agragarCategorias'])) {
@@ -77,21 +67,13 @@ class categoriasController
         }
     }
 
-    public function editarCategoriaController()
+    public static function editarCategoriaController()
     {
         $datosController = $_GET['idEditar'];
 
         $respuesta = categoriasModel::editarcategoriaModel($datosController, 'categorias');
-        echo '
-             <div class="form-group">
-            <label for="recipient-name" class="form-control-label">Nombre Usuario:</label>
-            <input type="text" class="form-control" id="recipient-name" name="nombreCategoria" value="' . $respuesta['nombreCategoria'] . '">
-          </div>
-            <input type="hidden" name="idCategoria" value="' . $respuesta['idCategoria'] . '">
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary" name="editarCat">Editar Usuario</button>
-           ';
+        return $respuesta;
+
     }
 
     public function actualizarCategoriaController()

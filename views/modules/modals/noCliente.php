@@ -7,20 +7,17 @@
                 <?php foreach ($cliente as $key): ?>
 
                 <?php endforeach?>
-                   <!--  <span class="text-danger">El Cliente es incorrecto</span> <br> -->
                 <center><span class="text-warning"><?php echo ucwords($key['nombreCliente']) ?>:</span>
                 </center>
                  <small><i>(Es el cliente al que le esta vendiendo.)</i></small>
+                  <center><span class="text-warning"><?php echo ucwords($key['tipoFactura']) ?>:</span>
+                </center>
+                 <small><i>(Es el tipo de factura.)</i></small>
                 </h5>
-                <!-- <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-                    <span aria-hidden="true">
-                        ×
-                    </span>
-                </button> -->
             </div>
             <div class="modal-body">
                 <div class="alert alert-warning" role="alert">
-                    <strong>Error! </strong> Usted le quiere vender a dos clientes distintos en la misma factura.
+                    <strong>Error! </strong> Usted le quiere vender a dos clientes distintos en la misma factura. <strong>O</strong> El tipo de Factura no coinciden.Por favor verificar dichos campos.
                 </div>
             </div>
             <div class="modal-footer">

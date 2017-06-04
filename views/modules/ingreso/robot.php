@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
     // var_dump($vas);
     if ($rand == $vas) {
         $success = '';
-        $success .= '<div class="alert alert-info" role="alert">
+        $success .= '<div class=" center alert alert-info" role="alert">
 <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw">
 </i>
 <span class="text-gray-dark">
@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
     ';
         // header('location:ingreso');
     } else {
-        $error .= "Los números ingresados  no son correcto. ";
+        $error .= "Los números ingresados <br>  no son correcto. ";
     }
 }
 
@@ -36,7 +36,8 @@ if (isset($_POST['submit'])) {
         </li>
     </ol>
     <div class="row">
-        <div class="col-xs-6">
+        <div class="col-md-3"></div>
+          <div class="col-md-6">
             <form action="" method="post">
                 <?php echo '<span class="badge rand">
                 ' . $va = rand(); ?>
@@ -60,12 +61,8 @@ if (isset($_POST['submit'])) {
                     </br>
                 </br>
             </form>
-        </div>
-    </div>
-    <br>
-        <br>
             <div class="row">
-                <div class="col-xs-6">
+                <div class="col-md-12">
                     <?php if (!empty($error)): ?>
                     <div class="alert alert-warning alert-dismissible fade show animated fadeInDown" role="alert">
                         <button aria-label="Close" class="close" data-dismiss="alert" type="button">
@@ -87,6 +84,6 @@ echo $redirect;
                     <?php endif?>
                 </div>
             </div>
-        </br>
-    </br>
-</meta>
+        </div>
+    </div>
+

@@ -13,13 +13,13 @@ if (!$_SESSION["nombreAdmin"]) {
 ?>
 <ol class="breadcrumb">
     <li class="breadcrumb-item active">
-        Sección Categorías
+        Sección de Categorías
     </li>
 </ol>
 <?php
 if (isset($_GET['action'])) {
     if ($_GET['action'] == 'okCategorias') {
-        echo '<div id="ok" class="alert alert-success alert-dismissible fade show" role="alert">
+        echo '<div id="oks" class="alert alert-success alert-dismissible fade show" role="alert">
 <button aria-label="Close" class="close" data-dismiss="alert" type="button">
     <span aria-hidden="true">
         ×
@@ -34,7 +34,7 @@ La Categoria fue agregada correctamente.
     }
     if ($_GET['action'] == 'editadoCat') {
         echo '
-    <div class="alert alert-success alert-dismissible fade show" id="ok" role="alert">
+    <div class="alert alert-success alert-dismissible fade show" id="oks" role="alert">
         <button aria-label="Close" class="close" data-dismiss="alert" type="button">
             <span aria-hidden="true">
                 ×
@@ -49,7 +49,7 @@ La Categoria fue agregada correctamente.
     }
     if ($_GET['action'] == 'DeletCategorias') {
         echo '
-        <div class="alert alert-warning alert-dismissible fade show" id="ok" role="alert">
+        <div class="alert alert-warning alert-dismissible fade show" id="oks" role="alert">
             <button aria-label="Close" class="close" data-dismiss="alert" type="button">
                 <span aria-hidden="true">
                     ×
@@ -107,8 +107,7 @@ La Categoria fue agregada correctamente.
                                 </thead>
                                 <?php
 $datos = new categoriasController();
-$datos->
-    getCategoriasController();
+$datos->getCategoriasController();
 $datos->deleteCategoriaController();
 ?>
                             </table>
@@ -138,8 +137,7 @@ $datos->deleteCategoriaController();
                     <?php endif?>
                     <?php
 $admin = new Admin();
-$admin->
-    fecha();
+$admin->fecha();
 
 $cat = new categoriasController();
 $cat->agregarCategoriasController();
@@ -147,6 +145,3 @@ $cat->agregarCategoriasController();
 ?>
                 </div>
             </div>
-        </meta>
-    </meta>
-</meta>

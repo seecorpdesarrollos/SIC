@@ -29,6 +29,16 @@ class ProveedoresModel
         $sql->close();
     }
 
+    public static function getProvinciaModel($tabla)
+    {
+        $sql = Conexion::conectar()->prepare("SELECT * FROM $tabla ");
+        $sql->execute();
+
+        return $sql->fetchAll();
+
+        $sql->close();
+    }
+
     public static function agregarProveedorModel($datosModel, $tabla)
     {
         $sql = Conexion::conectar()->prepare("INSERT INTO $tabla(nombreProveedor,apellidoProveedor,nombreEmpresa,telefonoProveedor,direccionProveedor,

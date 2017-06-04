@@ -21,9 +21,16 @@ class ProveedoresController
         }
     }
 
-    public function getCiudadController()
+    public static function getCiudadController()
     {
         $respuesta = ProveedoresModel::getCiudadModel('ciudad');
+
+        return $respuesta;
+    }
+
+    public static function getProvinciaController()
+    {
+        $respuesta = ProveedoresModel::getProvinciaModel('provincia');
 
         return $respuesta;
     }

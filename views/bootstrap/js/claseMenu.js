@@ -10,6 +10,11 @@ $(document).ready(function() {
         var target = $('nav a[href="' + main + '"]');
         target.addClass('actives');
     }
+    if (path == 'agragarclientes') {
+        var main = 'clientes';
+        var target = $('nav a[href="' + main + '"]');
+        target.addClass('actives');
+    }
     if (path == 'agragarproveedores') {
         var main = 'proveedores';
         var target = $('nav a[href="' + main + '"]');

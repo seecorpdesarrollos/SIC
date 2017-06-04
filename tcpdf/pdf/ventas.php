@@ -94,7 +94,7 @@ class ImprimirVentas
         <div  style="border: 1px solid #c9c9c9">
        <table>
         <tr>
-          <td style="width:540px">Cliente: $key[nombreCliente]</td>
+          <td style="width:540px">Cliente: $key[nombreCliente]   $key[apellidoCliente]</td>
         </tr>
          <tr>
           <td style="width:540px">Direccion: $key[direccion]</td>
