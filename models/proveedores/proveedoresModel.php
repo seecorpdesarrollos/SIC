@@ -72,4 +72,16 @@ class ProveedoresModel
 
         $sql->close();
     }
+
+    public static function editarProveedoresModel($datosModel, $tabla)
+    {
+        $sql = Conexion::conectar()->prepare("SELECT * FROM $tabla
+
+        WHERE idProveedor = :idProveedor");
+        $sql->bindParam(":idProveedor", $datosModel);
+        $sql->execute();
+
+        return $sql->fetchAll();
+        $sql->close();
+    }
 }

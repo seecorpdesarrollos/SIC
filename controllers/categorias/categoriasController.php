@@ -83,7 +83,7 @@ class categoriasController
             $datosController = array('nombreCategoria' => $_POST['nombreCategoria'],
                 'idCategoria' => $_POST['idCategoria'],
             );
-            var_dump($datosController);
+
             $respuesta = categoriasModel::actualizarCategoriaModel($datosController, 'categorias');
 
             if ($respuesta == 'success') {

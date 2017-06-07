@@ -74,4 +74,50 @@ class ProductosModel
         $sql->close();
     }
 
+    public function deleteProductosModel($datosModel, $tabla)
+    {
+        $sql = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE idProducto = :idProducto");
+        $sql->bindParam(':idProducto', $datosModel);
+
+        if ($sql->execute()) {
+            return 'success';
+        }
+
+        $sql->close();
+    }
+
+    public static function editarProductosModel($datosModel, $tabla)
+    {
+        $sql = Conexion::conectar()->prepare("SELECT * FROM $tabla ta
+        JOIN proveedores prov ON ta.idProveedor=prov.idProveedor
+        JOIN categorias cat ON ta.idCategoria=cat.idCategoria
+        WHERE idProducto = :idProducto");
+        $sql->bindParam(":idProducto", $datosModel);
+        $sql->execute();
+
+        return $sql->fetchAll();
+        $sql->close();
+    }
+
+    public static function actualizarProductosModel($datosModel, $tabla)
+    {
+
+        $sql = Conexion::conectar()->prepare("UPDATE $tabla SET
+            nombreProducto=:nombreProducto,idProveedor=:idProveedor,
+            precioProducto=:precioProducto,idCategoria =:idCategoria
+            WHERE idProducto = :idProducto");
+        $sql->bindParam(':nombreProducto', $datosModel['nombreProducto']);
+        $sql->bindParam(':idProveedor', $datosModel['idProveedor']);
+        $sql->bindParam(':precioProducto', $datosModel['precioProducto']);
+        $sql->bindParam(':idCategoria', $datosModel['idCategoria']);
+        $sql->bindParam(':idProducto', $datosModel['idProducto']);
+
+        if ($sql->execute()) {
+            return 'success';
+        } else {
+            return "Error";
+        }
+        $sql->close();
+    }
+
 }

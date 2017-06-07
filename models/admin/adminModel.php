@@ -63,55 +63,48 @@ class AdminModel
         // selecciona de la tabla pass para comparar las password.
         //
         //
-        $pass = Conexion::conectar()->prepare("SELECT password FROM pass WHERE password =:password AND idAdmin = :idAdmin ");
-
-        $pass->bindParam(":password", $datosModel['password']);
-        $pass->bindParam(":idAdmin", $datosModel['idAdmin']);
+        $pa = $datosModel['password'];
+        $id = $datosModel['idAdmin'];
+        $pass = Conexion::conectar()->prepare("SELECT password FROM pass
+            WHERE idAdmin = $id
+          ORDER BY idpass DESC LIMIT 3");
 
         $pass->execute();
-        $res = $pass->fetch();
+        $res = $pass->fetchAll(PDO::FETCH_ASSOC);
+        $a = $res[0];
+        $b = $res[1];
+        $c = $res[2];
+        foreach ($a as $key) {
 
-        var_dump($res);
-        if ($res) {
-            // header('location:errorPass');
-
-        } else {
-
-            //////
-            // // si todo va bien realiza el insert al tabla pass
-            //////
-            $sql1 = Conexion::conectar()->prepare("INSERT INTO pass(password ,idAdmin)VALUES (:password,:idAdmin)");
-            $sql1->bindParam(":password", $datosModel['password']);
-            $sql1->bindParam(":idAdmin", $datosModel['idAdmin']);
-
-            if ($sql->execute() and $sql1->execute()) {
-                return 'seccess';
+            if ($pa == $key) {
+                return 'repetida';
             }
-            $sql->close();
         }
+        foreach ($b as $row) {
+
+            if ($pa == $row) {
+                return 'repetida';
+            }
+        }
+        foreach ($c as $val) {
+            if ($pa == $val) {
+                return 'repetida';
+            }
+        }
+
+        //// si todo va bien realiza el insert al tabla pass
+        $sql1 = Conexion::conectar()->prepare("INSERT INTO pass(password ,idAdmin)VALUES (:password,:idAdmin)");
+        $sql1->bindParam(":password", $datosModel['password']);
+        $sql1->bindParam(":idAdmin", $datosModel['idAdmin']);
+
+        if ($sql->execute() and $sql1->execute()) {
+            return 'success';
+        }
+
+        $sql->close();
     }
 
-    // static public function  deletModel($tabla,$id,$pa){
-
-    //       $sql = Conexion::conectar()->prepare("SELECT COUNT(*) AS TOTAL , MIN(idpass) AS pas FROM $tabla");
-    //       $sql->execute();
-    //        return $sql->fetchAll();
-
-    //       $sql->close();
-
-    // }
-
-    //   static public function  deletModelU($datosModel,$tabla){
-
-    //        $sql = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE idpass = :idpass ");
-    //           $sql->bindParam(":idpass",$datosModel['pas']);
-    //      if( $sql->execute()){
-    //          header('location:nosotros');
-    //      }
-    //       $sql->close();
-    //  }
-
-    public static function agregarUsuariosModel($datosModel, $tabla)
+    public function agregarUsuariosModel($datosModel, $tabla)
     {
 
         $sql = Conexion::conectar()->prepare("INSERT INTO $tabla (nombreAdmin,password,rol,fechaCreado)
@@ -130,7 +123,7 @@ class AdminModel
         $sql->close();
     }
 
-    public static function deleteUsuarioModel($datosModel, $tabla)
+    public function deleteUsuarioModel($datosModel, $tabla)
     {
 
         $sql = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE idAdmin = :idAdmin");
@@ -158,7 +151,7 @@ class AdminModel
         $sql->close();
     }
 
-    public static function actualizarUsuarioModel($datosModel, $tabla)
+    public function actualizarUsuarioModel($datosModel, $tabla)
     {
 
         $sql = Conexion::conectar()->prepare("UPDATE $tabla SET nombreAdmin=:nombreAdmin,password=:password,rol=:rol WHERE idAdmin=:idAdmin");

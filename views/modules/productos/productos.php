@@ -10,9 +10,9 @@ if (!$_SESSION["nombreAdmin"]) {
 </ol>
 <?php if (isset($_GET['action'])) {
 
-    if ($_GET['action'] == 'editadoCat') {
+    if ($_GET['action'] == 'editadoProd') {
         echo '
-<div id="ok" class="alert alert-success alert-dismissible fade show" role="alert">
+<div id="oks" class="alert alert-success alert-dismissible fade show" role="alert">
 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">
         &times;
@@ -21,13 +21,13 @@ if (!$_SESSION["nombreAdmin"]) {
 <strong>
     Enorabuena!
 </strong>
-La Categoria fue Editada correctamente al Sistema.
+El Producto fue Editado correctamente al Sistema.
 </div>
 ';
-        echo "  <META HTTP-EQUIV='Refresh' CONTENT='4; URL=categorias'/> ";
+        echo "  <META HTTP-EQUIV='Refresh' CONTENT='4; URL=productos'/> ";
     }
     if ($_GET['action'] == 'okInventarios') {
-        echo '<div id="ok"  class="alert alert-success alert-dismissible fade show" role="alert">
+        echo '<div id="oks"  class="alert alert-success alert-dismissible fade show" role="alert">
 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">
         &times;
@@ -41,9 +41,9 @@ El Inventario fue agregado correctamente al sistema.
 ';
         echo "  <META HTTP-EQUIV='Refresh' CONTENT='4; URL=inventario'/> ";
     }
-    if ($_GET['action'] == 'DeletCategorias') {
+    if ($_GET['action'] == 'okProdDelete') {
         echo '
-<div id="ok" class="alert alert-warning alert-dismissible fade show" role="alert">
+<div id="oks" class="alert alert-warning alert-dismissible fade show" role="alert">
 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">
         &times;
@@ -52,10 +52,10 @@ El Inventario fue agregado correctamente al sistema.
 <strong>
     Enorabuena!
 </strong>
-La Categoria fue Borrada correctamente del sistema.
+El Prducto fue Borrado correctamente del sistema.
 </div>
 ';
-        echo "  <META HTTP-EQUIV='Refresh' CONTENT='4; URL=categorias'/> ";
+        echo "  <META HTTP-EQUIV='Refresh' CONTENT='4; URL=productos'/> ";
     }
 }
 ?>
@@ -77,12 +77,12 @@ La Categoria fue Borrada correctamente del sistema.
     <div class="card">
         <div class="card-block">
             <?php if (isset($_GET['action'])): ?>
-            <?php if ($_GET['action'] == 'productos' or $_GET['action'] == 'okProductos' or $_GET['action'] == 'Deletproductos' or $_GET['action'] == 'editarProd' or $_GET['action'] == 'editadoProd'): ?>
+            <?php if ($_GET['action'] == 'productos' or $_GET['action'] == 'okProductos' or $_GET['action'] == 'okProdDelete' or $_GET['action'] == 'editarProd' or $_GET['action'] == 'editadoProd'): ?>
             <h1 class="alert alert-warning text-center">
                 Listado de Productos
             </h1>
             <table class="table table-bordered table-sm" id="tablas">
-                <thead class="badge-warning actives">
+                <thead class="badge-primary text-white">
                     <tr>
                         <td>
                             Producto
@@ -120,15 +120,15 @@ La Categoria fue Borrada correctamente del sistema.
                     <td>
                         <?php echo $key['nombreCategoria'] ?>
                     </td>
-                     <td>
+                     <td align="center">
                         <?php echo $key['cantidadIngresada'] ?>
                     </td>
                     <td align="center">
-                        <a href="index.php?action=editarCat&idEditar=  <?php echo $key['idProducto'] ?> ">
+                        <a href="index.php?action=editarProd&idProEdit=<?php echo $key['idProducto'] ?> ">
                             <i class="fa fa-edit btn btn-outline-primary btn-sm">
                             </i>
                         </a>
-                        <a href="index.php?action=categorias&id=  <?php echo $key['idProducto'] ?> ">
+                        <a href="index.php?action=productos&idProd=<?php echo $key['idProducto'] ?> ">
                             <i class="fa fa-trash  btn btn-outline-danger btn-sm">
                             </i>
                         </a>
@@ -242,4 +242,6 @@ $a->getCategoriasSelectController();?>
 $re = new ProductosController();
 $re->registroProductosController();
 $re->agregarInventarioController();
+$re->deleteProductosController();
+$re->actualizarProductosController();
 ?>

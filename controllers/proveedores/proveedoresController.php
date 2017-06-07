@@ -64,4 +64,14 @@ class ProveedoresController
         }
     }
 
+    public static function editarProveedoresController()
+    {
+        if (isset($_GET['idEditProv'])) {
+            $datosController = $_GET['idEditProv'];
+        }
+        $respuesta = ProveedoresModel::editarProveedoresModel($datosController, 'proveedores');
+
+        return $respuesta;
+    }
+
 }

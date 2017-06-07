@@ -17,6 +17,10 @@ class EnlacesPaginas
 
             $module = "views/modules/inicio.php";
 
+        } else if ($get == 'repetida') {
+
+            $module = "views/repetida.php";
+
         }
         //
         // Fin de las Páginas
@@ -31,7 +35,7 @@ class EnlacesPaginas
 
             $module = "views/modules/proveedores/proveedores.php";
 
-        } else if ($get == "agragarproveedores") {
+        } else if ($get == "agragarproveedores" or $get == 'editarProv') {
 
             $module = "views/modules/proveedores/proveedores.php";
 
@@ -83,9 +87,13 @@ class EnlacesPaginas
         //  Páginas DE Productos
         // --------------------------------------------------------
 
-        else if ($get == "productos") {
+        else if ($get == "productos" or $get == 'okProdDelete' or $get == 'editadoProd') {
 
             $module = "views/modules/productos/productos.php";
+
+        } else if ($get == "editarProd") {
+
+            $module = "views/modules/productos/editarProd.php";
 
         } else if ($get == "agragarproductos") {
 

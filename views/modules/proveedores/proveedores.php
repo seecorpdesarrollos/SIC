@@ -80,7 +80,8 @@ $p = ProveedoresController::getProveedoresController();
              <td><?php echo $key['telefonoProveedor'] ?></td>
              <td><?php echo $key['direccionProveedor'] ?></td>
               <td align='center' class='tooltips' data-toggle='tooltip' data-placement='top' title='Provincia  : <?php echo $key['nombreProvincia'] ?>'><?php echo $key['nombreCiudad'] ?></td>
-             <td align="center"><a href="index.php?action=editarCat&idEditar='.$key['idProveedor'].'"><i class="fa fa-edit btn btn-outline-primary btn-sm"></i></a> <a href="index.php?action=categorias&id='.$key['idProveedor'].'"><i class="fa fa-trash  btn btn-outline-danger btn-sm"></i></a>
+
+             <td align="center"><a href="index.php?action=editarProv&idEditProv=<?php echo $key['idProveedor'] ?>"><i class="fa fa-edit btn btn-outline-primary btn-sm"></i></a> <a href="index.php?action=proveedores&id=<?php echo $key['idProveedor'] ?>"><i class="fa fa-trash  btn btn-outline-danger btn-sm"></i></a>
              </td>
            </tr>
            <?php endforeach?>
@@ -145,15 +146,74 @@ $a = ProveedoresController::getCiudadController()
   </div>
 
     <?php endif?>
+
+
+     <!-- Seccion de ingreso a Formulario para editar proveedores -->
+<?php $editarProv = ProveedoresController::editarProveedoresController();?>
+    <?php if ($_GET['action'] == 'editarProv'): ?>
+      <h3 class="alert alert-warning text-center">Editar Proveedores</h3>
+        <form method="post" onsubmit="return validarCategorias()">
+     <div class="row">
+      <div class="col-md-6">
+      <?php foreach ($editarProv as $key): ?>
+
+        <div class="form-group">
+          <label for="nombreCategorias" class="text-primary">Nombre Proveedor</label>
+          <input type="text" class="form-control" id="nombreProveedor" placeholder="Nombre del Proveedor"  name="nombreProveedor" value="<?php echo $key['nombreProveedor'] ?>">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="nombreCategorias" class=text-primary>Nombre Ciudad</label>
+         <select style="width:422px;"  class="chosen-select" name="idCiudad">
+         <option>Elegir ciudad</option>
+             <?php
+$a = ProveedoresController::getCiudadController()
+?>
+               <?php foreach ($a as $key): ?>
+                 <option value="<?php echo $key['idCiudad'] ?>"><?php echo $key['nombreCiudad'] . ' /' . $key['nombreProvincia'] ?></option>
+               <?php endforeach?>
+            </select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="nombreCategorias" class="text-primary">Apellido Proveedor</label>
+          <input type="text" class="form-control" id="apellidoProveedor" placeholder="Apellido del Proveedor"  name="apellidoProveedor" required="">
+        </div>
+      </div>
+       <div class="col-md-6">
+        <div class="form-group" id="form">
+          <label for="nombreCategorias" class="text-primary">Nombre Empresa</label>
+          <input type="text" class="form-control" id="nombreEmpresa" placeholder="Nombre del la Empresa"  name="nombreEmpresa" required="">
+          <span id="prove"></span>
+        </div>
+      </div>
+       <div class="col-md-6">
+        <div class="form-group">
+          <label for="nombreCategorias" class="text-primary">Telefono Contacto</label>
+          <input type="text" class="form-control" id="telefonoProveedor" placeholder="Teléfono del la Empresa"  name="telefonoProveedor" required="">
+        </div>
+      </div>
+       <div class="col-md-6">
+        <div class="form-group">
+          <label for="nombreCategorias" class="text-primary">Direción Proveedor</label>
+          <input type="text" class="form-control" id="direccionProveedor" placeholder="dirección del la Empresa"  name="direccionProveedor" required="">
+        </div>
+      </div>
+                <input type="submit" name="agragarProveedor" id="button" value="Editar Proveedor" class="btn btn-outline-danger center" id="button">
+        </form>
+     </div>
+  </div>
+
+      <?php endforeach?>
+    <?php endif?>
   <?php endif?>
  </div>
  </div>
 
 
   <?php
-$admin = new Admin();
-$admin->fecha();
-
 $agr = new ProveedoresController();
 $agr->agregarProveedorController();
 

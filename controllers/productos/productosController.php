@@ -76,4 +76,48 @@ class ProductosController
         }
     }
 
+    public function deleteProductosController()
+    {
+        if (isset($_GET['idProd'])) {
+            $idProd = $_GET['idProd'];
+
+            $respuesta = ProductosModel::deleteProductosModel($idProd, 'productos');
+
+            if ($respuesta == 'success') {
+                header('location:okProdDelete');
+            }
+
+        }
+    }
+
+    public static function editarProductosController()
+    {
+        $datosController = $_GET['idProEdit'];
+
+        $respuesta = ProductosModel::editarProductosModel($datosController, 'productos');
+        return $respuesta;
+
+    }
+
+    public function actualizarProductosController()
+    {
+
+        if (isset($_POST['editarProd'])) {
+            $datosController = array(
+                'nombreProducto' => $_POST['nombreProducto'],
+                'idProveedor' => $_POST['idProveedor'],
+                'precioProducto' => $_POST['precioProducto'],
+                'idCategoria' => $_POST['idCategoria'],
+                'idProducto' => $_POST['idProducto'],
+            );
+
+            $respuesta = ProductosModel::actualizarProductosModel($datosController, 'productos');
+
+            if ($respuesta == 'success') {
+
+                header('location:editadoProd');
+            }
+        }
+    }
+
 }

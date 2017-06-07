@@ -105,7 +105,7 @@ La Categoria fue agregada correctamente.
                                         </td>
                                     </tr>
                                 </thead>
-                                <?php
+<?php
 $datos = new categoriasController();
 $datos->getCategoriasController();
 $datos->deleteCategoriaController();
@@ -136,8 +136,6 @@ $datos->deleteCategoriaController();
                     <?php endif?>
                     <?php endif?>
                     <?php
-$admin = new Admin();
-$admin->fecha();
 
 $cat = new categoriasController();
 $cat->agregarCategoriasController();

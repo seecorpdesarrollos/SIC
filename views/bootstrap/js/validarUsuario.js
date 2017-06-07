@@ -77,10 +77,9 @@ $("#nombreCategorias").change(function() {
 });
 // ===================================================================
 // 
-//    validar el registro de los Categorias
+//    validar el registro del password
 // ===================================================================
 function validarRegistro() {
-    // var usuario = $('#nombreAdmin').val();
     var password = $('#contra').val();
     var exprecion = /^[a-zA-Z0-9]*$/;
     var expre = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{6,16}.*$/;

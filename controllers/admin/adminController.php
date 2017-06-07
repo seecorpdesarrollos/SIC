@@ -3,7 +3,7 @@
 class Admin
 {
 
-    public function getAdminController()
+    public static function getAdminController()
     {
 
         $respuesta = AdminModel::getAdminModel('administrador');
@@ -41,7 +41,6 @@ class Admin
 
         $hoy = date('Y-m-d');
         if ($hoy >= $respuesta->cambiar) {
-            echo "cambie el password";
             require 'views/modules/modals/cambiarPass.php';
         }
     }
@@ -54,12 +53,15 @@ class Admin
                 'password' => $_POST['password'],
                 'fechaCreado' => $_POST['fechaCreado'],
             );
+
             $respuesta = AdminModel::cambiarPassworModel($datosController, 'administrador');
 
-            if ($respuesta == 'seccess') {
+            if ($respuesta == 'repetida') {
+                header('location:repetida');
+            }
+            if ($respuesta == 'success') {
                 header('location:cambio');
-            } else {
-                echo "Error";
+
             }
         }
     }
@@ -97,7 +99,7 @@ class Admin
         }
     }
 
-    public function editarUsuarioController()
+    public static function editarUsuarioController()
     {
         $datosController = $_GET['idEditar'];
 
