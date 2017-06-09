@@ -150,6 +150,7 @@ $("#nombreProductos").change(function() {
     // console.log(producto);
     var datos = new FormData();
     datos.append('inputvalidarProducto', producto);
+    console.log(producto);
     $.ajax({
         url: 'views/ajax.php',
         method: "POST",
@@ -172,6 +173,7 @@ $("#nombreProductos").change(function() {
                 $("#nombreProductos").addClass('form-control form-control-success');
                 $('#nombreProductos').css('border', 'solid 1px #8FF48A');
                 $("#pro").html('');
+                console.log(respuesta);
                 $("#button").removeAttr('disabled', 'disabled');
                 usuarioExistente = false;
             }

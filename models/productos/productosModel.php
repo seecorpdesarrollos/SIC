@@ -16,6 +16,19 @@ class ProductosModel
         $sql->close();
     }
 
+    public static function validarProductoModel($datosModel, $tabla)
+    {
+
+        $sql = Conexion::conectar()->prepare("SELECT nombreProducto FROM $tabla WHERE nombreProducto = :nombreProducto");
+        $sql->bindParam(':nombreProducto', $datosModel);
+
+        $sql->execute();
+
+        return $sql->fetch();
+
+        $sql->close();
+    }
+
     public static function registroProductoModel($datosModel, $tabla)
     {
 

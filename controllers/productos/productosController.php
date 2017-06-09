@@ -41,7 +41,6 @@ class ProductosController
     {
         $datosController = $validarProducto;
         $respuesta = ProductosModel::validarProductoModel($datosController, 'productos');
-
         if ($respuesta) {
             echo 1;
         } else {

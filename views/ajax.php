@@ -9,6 +9,7 @@ require_once '../controllers/ventas/ventasController.php';
 require_once '../models/admin/adminModel.php';
 require_once '../models/categorias/categoriasModel.php';
 require_once '../models/proveedores/proveedoresModel.php';
+require_once '../models/productos/productosModel.php';
 require_once '../models/ventas/ventasModel.php';
 
 require_once '../models/conexion.php';
@@ -45,7 +46,7 @@ class Ajax
     }
     public function validarProductoAjax()
     {
-        $datos = $this->validarProveedor;
+        $datos = $this->validarProducto;
 
         $respuesta = ProductosController::validarProductoController($datos);
         echo $respuesta;
@@ -81,6 +82,6 @@ if (isset($_POST['inputvalidarProveedor'])) {
 
 if (isset($_POST['inputvalidarProducto'])) {
     $c = new Ajax();
-    $c->validarProveedor = $_POST['inputvalidarProducto'];
+    $c->validarProducto = $_POST['inputvalidarProducto'];
     $c->validarProductoAjax();
 }
