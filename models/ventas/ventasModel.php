@@ -54,7 +54,7 @@ class VentasModel
 
             if ($key['cantidadIngresada'] < $datosModel['unidad']) {
                 return 'no';
-                // $key->close();
+
             }
         }
 
@@ -77,14 +77,29 @@ class VentasModel
                 return 'success';
             }
         }
-        $cedulaSql = Conexion::conectar()->prepare('SELECT idCliente,tipoFactura FROM temp te
-            WHERE idCliente = :idCliente AND tipoFactura=:tipoFactura');
+        // revisa que sea el mismo cliente
+        //
+        //
+        $cedulaSql = Conexion::conectar()->prepare('SELECT idCliente FROM temp
+            WHERE idCliente = :idCliente ');
         $cedulaSql->execute(array(':idCliente' => $datosModel['idCliente'],
-            ':tipoFactura' => $datosModel['tipoFactura']));
+        ));
         $res = $cedulaSql->fetch();
 
         if (!$res) {
             return 'noCliente';
+
+        }
+        // revisa que sea el mismo tipo de factura
+        //
+        //
+        $cedulaSql = Conexion::conectar()->prepare('SELECT tipoFactura FROM temp
+            WHERE tipoFactura=:tipoFactura');
+        $cedulaSql->execute(array(':tipoFactura' => $datosModel['tipoFactura']));
+        $res = $cedulaSql->fetch();
+
+        if (!$res) {
+            return 'noFacturaTipo';
 
         }
 

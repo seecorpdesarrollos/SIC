@@ -37,13 +37,14 @@ class VentasController
             );
 
             $respuesta = VentasModel::registroFacturaModel($datosController, 'temp');
-            var_dump($respuesta);
-            // var_dump($_POST['unidad']);
             if ($respuesta == 'no') {
                 require 'views/modules/modals/noInventario.php';
             }
             if ($respuesta == 'noCliente') {
                 require 'views/modules/modals/noCliente.php';
+            }
+            if ($respuesta == 'noFacturaTipo') {
+                require 'views/modules/modals/noFacturaTipo.php';
             }
             if ($respuesta == 'success') {
                 header('location:okVentas');

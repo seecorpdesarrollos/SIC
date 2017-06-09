@@ -74,4 +74,36 @@ class ProveedoresController
         return $respuesta;
     }
 
+    public function actualizarProveedorController()
+    {
+        if (isset($_POST['editarProveedor'])) {
+            $datosController = array('nombreProveedor' => $_POST['nombreProveedor'],
+                'apellidoProveedor' => $_POST['apellidoProveedor'],
+                'nombreEmpresa' => $_POST['nombreEmpresa'],
+                'telefonoProveedor' => $_POST['telefonoProveedor'],
+                'direccionProveedor' => $_POST['direccionProveedor'],
+                'idCiudad' => $_POST['idCiudad'],
+                'idProveedor' => $_POST['idProveedor']);
+
+            $respuesta = ProveedoresModel::actualizarProveedorModel($datosController, 'proveedores');
+
+            if ($respuesta == 'success') {
+                header('location:okProvEdit');
+            }
+        }
+    }
+
+    public function deleteProveedoresController()
+    {
+        if (isset($_GET['idProv'])) {
+            $datosController = $_GET['idProv'];
+
+            $respuesta = ProveedoresModel::deleteProveedoresModel($datosController, 'proveedores');
+
+            if ($respuesta == 'success') {
+                header('location:Deletproveedores');
+            }
+        }
+    }
+
 }

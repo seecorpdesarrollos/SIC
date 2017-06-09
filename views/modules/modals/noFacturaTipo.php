@@ -6,16 +6,16 @@
                 <h5 class="modal-title" id="exampleModalLabel">
                 <?php foreach ($cliente as $key): ?>
                 <?php endforeach?>
-              <div class="alert alert-info" role="alert">
-                <center><span class="text-warning"><?php echo ucwords($key['nombreCliente']) . ' ' . ucwords($key['apellidoCliente']) ?>:</span>
+               <div class="alert alert-info" role="alert">
+                <center><span class="text-warning"><?php echo ucwords($key['tipoFactura']) ?>:</span>
                 </center>
-                 <small><i class="text-danger">(Es el cliente al que le esta vendiendo.)</i></small>
+                 <small><i class="text-danger">(Es el Tipo de Factura  que  esta vendiendo.)</i></small>
               </div>
                 </h5>
-            </div>
+           </div>
             <div class="modal-body">
                 <div class="alert alert-warning" role="alert">
-                    <strong>Error! </strong> Usted le quiere vender a dos clientes distintos en la misma factura.Por favor verificar dicho campo.
+                    <strong>Error! </strong> El tipo de Factura no coinciden.Por favor verificar dicho campo.
                 </div>
             </div>
             <div class="modal-footer">

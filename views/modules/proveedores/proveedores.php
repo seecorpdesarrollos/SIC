@@ -18,7 +18,7 @@ if (!$_SESSION["nombreAdmin"]) {
 <?php
 if (isset($_GET['action'])) {
     if ($_GET['action'] == 'okProv') {
-        echo '<div id="ok" class="alert alert-success alert-dismissible fade show" role="alert">
+        echo '<div id="oks" class="alert alert-success alert-dismissible fade show" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -26,23 +26,23 @@ if (isset($_GET['action'])) {
       </div>';
         echo "<META HTTP-EQUIV='Refresh' CONTENT='4; URL=proveedores'>";
     }
-    if ($_GET['action'] == 'editadoCat') {
-        echo '<div id="ok" class="alert alert-success alert-dismissible fade show" role="alert">
+    if ($_GET['action'] == 'okProvEdit') {
+        echo '<div id="oks" class="alert alert-success alert-dismissible fade show" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <strong>Enorabuena!</strong> La Categoria fue Editada correctamente al Sistema.
+        <strong>Enorabuena!</strong> El proveedor fue Editado correctamente al Sistema.
       </div>';
-        echo "<META HTTP-EQUIV='Refresh' CONTENT='4; URL=categorias'>";
+        echo "<META HTTP-EQUIV='Refresh' CONTENT='4; URL=proveedores'>";
     }
-    if ($_GET['action'] == 'DeletCategorias') {
-        echo '<div id="ok" class="alert alert-warning alert-dismissible fade show" role="alert">
+    if ($_GET['action'] == 'Deletproveedores') {
+        echo '<div id="oks" class="alert alert-warning alert-dismissible fade show" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <strong>Enorabuena!</strong> La Categoria fue Borrada correctamente del sistema.
+        <strong>Enorabuena!</strong> El Proveedor fue Borrado correctamente del sistema.
       </div>';
-        echo "<META HTTP-EQUIV='Refresh' CONTENT='4; URL=categorias'>";
+        echo "<META HTTP-EQUIV='Refresh' CONTENT='4; URL=proveedores'>";
     }
 }
 ?>
@@ -57,7 +57,7 @@ if (isset($_GET['action'])) {
 <div class="card">
  <div class="card-block">
   <?php if (isset($_GET['action'])): ?>
-    <?php if ($_GET['action'] == 'proveedores' or $_GET['action'] == 'okproveedores' or $_GET['action'] == 'Deletproveedores' or $_GET['action'] == 'okProv' or $_GET['action'] == 'editadoProd'): ?>
+    <?php if ($_GET['action'] == 'proveedores' or $_GET['action'] == 'okproveedores' or $_GET['action'] == 'Deletproveedores' or $_GET['action'] == 'okProv' or $_GET['action'] == 'okProvEdit'): ?>
       <h1 class="alert alert-warning text-center">Listado de Proveedores</h1>
       <table class="table table-bordered table-sm" id="tablas">
         <thead class="badge-warning actives">
@@ -81,7 +81,7 @@ $p = ProveedoresController::getProveedoresController();
              <td><?php echo $key['direccionProveedor'] ?></td>
               <td align='center' class='tooltips' data-toggle='tooltip' data-placement='top' title='Provincia  : <?php echo $key['nombreProvincia'] ?>'><?php echo $key['nombreCiudad'] ?></td>
 
-             <td align="center"><a href="index.php?action=editarProv&idEditProv=<?php echo $key['idProveedor'] ?>"><i class="fa fa-edit btn btn-outline-primary btn-sm"></i></a> <a href="index.php?action=proveedores&id=<?php echo $key['idProveedor'] ?>"><i class="fa fa-trash  btn btn-outline-danger btn-sm"></i></a>
+             <td align="center"><a href="index.php?action=editarProv&idEditProv=<?php echo $key['idProveedor'] ?>"><i class="fa fa-edit btn btn-outline-primary btn-sm"></i></a> <a href="index.php?action=proveedores&idProv=<?php echo $key['idProveedor'] ?>"><i class="fa fa-trash  btn btn-outline-danger btn-sm"></i></a>
              </td>
            </tr>
            <?php endforeach?>
@@ -149,10 +149,11 @@ $a = ProveedoresController::getCiudadController()
 
 
      <!-- Seccion de ingreso a Formulario para editar proveedores -->
+     <!----------------------------------------------------------- -->
 <?php $editarProv = ProveedoresController::editarProveedoresController();?>
     <?php if ($_GET['action'] == 'editarProv'): ?>
       <h3 class="alert alert-warning text-center">Editar Proveedores</h3>
-        <form method="post" onsubmit="return validarCategorias()">
+        <form method="post">
      <div class="row">
       <div class="col-md-6">
       <?php foreach ($editarProv as $key): ?>
@@ -166,12 +167,12 @@ $a = ProveedoresController::getCiudadController()
         <div class="form-group">
           <label for="nombreCategorias" class=text-primary>Nombre Ciudad</label>
          <select style="width:422px;"  class="chosen-select" name="idCiudad">
-         <option>Elegir ciudad</option>
+         <option value="<?php echo $key['idCiudad'] ?>"><?php echo $key['nombreCiudad'] ?></option>
              <?php
 $a = ProveedoresController::getCiudadController()
 ?>
-               <?php foreach ($a as $key): ?>
-                 <option value="<?php echo $key['idCiudad'] ?>"><?php echo $key['nombreCiudad'] . ' /' . $key['nombreProvincia'] ?></option>
+               <?php foreach ($a as $row): ?>
+                 <option value="<?php echo $row['idCiudad'] ?>"><?php echo $row['nombreCiudad'] . ' /' . $row['nombreProvincia'] ?></option>
                <?php endforeach?>
             </select>
         </div>
@@ -179,29 +180,30 @@ $a = ProveedoresController::getCiudadController()
       <div class="col-md-6">
         <div class="form-group">
           <label for="nombreCategorias" class="text-primary">Apellido Proveedor</label>
-          <input type="text" class="form-control" id="apellidoProveedor" placeholder="Apellido del Proveedor"  name="apellidoProveedor" required="">
+          <input type="text" class="form-control" id="apellidoProveedor" placeholder="Apellido del Proveedor"  name="apellidoProveedor" value="<?php echo $key['apellidoProveedor'] ?>">
         </div>
       </div>
        <div class="col-md-6">
         <div class="form-group" id="form">
           <label for="nombreCategorias" class="text-primary">Nombre Empresa</label>
-          <input type="text" class="form-control" id="nombreEmpresa" placeholder="Nombre del la Empresa"  name="nombreEmpresa" required="">
+          <input type="text" class="form-control" id="nombreEmpresa" placeholder="Nombre del la Empresa"  name="nombreEmpresa" value="<?php echo $key['nombreEmpresa'] ?>">
           <span id="prove"></span>
         </div>
       </div>
        <div class="col-md-6">
         <div class="form-group">
           <label for="nombreCategorias" class="text-primary">Telefono Contacto</label>
-          <input type="text" class="form-control" id="telefonoProveedor" placeholder="Teléfono del la Empresa"  name="telefonoProveedor" required="">
+          <input type="text" class="form-control" id="telefonoProveedor" placeholder="Teléfono del la Empresa"  name="telefonoProveedor" value="<?php echo $key['telefonoProveedor'] ?>">
         </div>
       </div>
        <div class="col-md-6">
         <div class="form-group">
           <label for="nombreCategorias" class="text-primary">Direción Proveedor</label>
-          <input type="text" class="form-control" id="direccionProveedor" placeholder="dirección del la Empresa"  name="direccionProveedor" required="">
+          <input type="text" class="form-control" id="direccionProveedor" placeholder="dirección del la Empresa"  name="direccionProveedor" value="<?php echo $key['direccionProveedor'] ?>">
         </div>
       </div>
-                <input type="submit" name="agragarProveedor" id="button" value="Editar Proveedor" class="btn btn-outline-danger center" id="button">
+      <input type="hidden" name="idProveedor" value="<?php echo $key['idProveedor'] ?>">
+                <input type="submit" name="editarProveedor" id="button" value="Editar Proveedor" class="btn btn-outline-danger center" id="button">
         </form>
      </div>
   </div>
@@ -216,5 +218,6 @@ $a = ProveedoresController::getCiudadController()
   <?php
 $agr = new ProveedoresController();
 $agr->agregarProveedorController();
-
+$agr->actualizarProveedorController();
+$agr->deleteProveedoresController();
 ?>

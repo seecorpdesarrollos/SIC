@@ -116,8 +116,8 @@ define('PDF_HEADER_TITLE', ' Nro Factura:');
  */
 date_default_timezone_set('America/Argentina/Buenos_Aires');
 $dia = date('d-m-Y');
-$hora = date('H:i');
-define('PDF_HEADER_STRING', " Incar s.r.l - www.diegopennisi.es \n Fecha: $dia  \n Hora : $hora \n \n");
+$iva = '11-1432687-2';
+define('PDF_HEADER_STRING', " Incar s.r.l - www.diegopennisi.es \n Fecha: $dia  \n Hora : $iva \n \n");
 
 /**
  * Document unit of measure [pt=point, mm=millimeter, cm=centimeter, in=inch].
@@ -172,7 +172,7 @@ define('PDF_FONT_NAME_DATA', 'helvetica');
 /**
  * Default data font size.
  */
-define('PDF_FONT_SIZE_DATA', 8);
+define('PDF_FONT_SIZE_DATA', 5);
 
 /**
  * Default monospaced font name.

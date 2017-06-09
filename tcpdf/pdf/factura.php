@@ -38,7 +38,7 @@ class ImprimirVentas
         foreach ($result as $resultado) {
             $fecha = $resultado['fechaVenta'];
             $fechas = date('d-m-Y', strtotime($fecha));
-            define('PDF_HEADER_STRINGT', " Incar s.r.l - www.diegopennisi.es \n Fecha: $fechas  \n Hora : $hora \n");
+            define('PDF_HEADER_STRINGT', " Incar s.r.l - www.diegopennisi.es \n Fecha: $fechas  \n Iva Habilitado : $iva \n");
 // set default header data
             $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE . '  ' . $numFac, PDF_HEADER_STRINGT, array(5, 64, 255), array(9, 64, 128));
             $pdf->setFooterData(array(0, 64, 0), array(0, 64, 128));
@@ -84,7 +84,7 @@ class ImprimirVentas
             $pdf->AddPage();
 
 // set text shadow effect
-            $pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => array(196, 196, 196), 'opacity' => 1, 'blend_mode' => 'Normal'));
+            $pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => array(196, 196, 196), 'opacity' => 2, 'blend_mode' => 'Normal'));
 
 // Set some content to print
             $ciudad = strtolower($resultado[nombreCiudad]);
@@ -98,16 +98,13 @@ class ImprimirVentas
           <td style="width:540px">Direccion: $resultado[direccion]</td>
         </tr>
          <tr>
-          <td style="width:540px">Provincia : $resultado[nombreProvincia] -  Ciudad: $ciudad</td>
+          <td style="width:540px">Ciudad : $ciudad  - $resultado[nombreProvincia]</td>
         </tr>
          <tr>
-          <td style="width:540px">Tipo Factura : $resultado[tipoFactura]</td>
+          <td style="width:540px">Cuit : $resultado[cuit]</td>
         </tr>
-
-<tr>
-            <td width="200px"></td>
-
-            <td width="200px"></td>
+        <tr>
+          <td style="width:540px">Tipo Factura : $resultado[tipoFactura]</td>
         </tr>
         </table>
 </div>
@@ -117,7 +114,7 @@ class ImprimirVentas
          </tr>
         </table>
 
-   <table style="border: 1px solid #4AA0F1; text-align:center; line-height: 20px; font-size:23px">
+   <table style="border: 1px solid #4AA0F1; text-align:center; line-height: 20px; font-size:15px">
         <tr>
             <td style="border: 1px solid #666; background-color:#4AA0F1; color:#fff">Producto</td>
             <td style="border: 1px solid #666; background-color:#4AA0F1; color:#fff">Cantidad</td>
@@ -142,8 +139,7 @@ EOD;
             $html2 = <<<EOF
 
 
-
-            <table style="border: 1px solid #333; text-align:center; line-height: 20px; font-size:18px">
+            <table style="border: 1px solid #333; text-align:center; line-height: 20px; font-size:13px">
                 <tr>
                     <td style="border: 1px solid #666;">$item[nombreProducto]</td>
                     <td style="border: 1px solid #666;">$item[cantidadKilos]</td>
@@ -167,23 +163,6 @@ EOF;
         $html3 = <<<EOD
 <div  style="border: 1px solid #c9c9c9;padding:10px">
 
-        <table>
-         <tr>
-         <td></td>
-         </tr>
-        </table>
-
-         <table>
-         <tr>
-         <td></td>
-         </tr>
-        </table>
-
-          <table>
-         <tr>
-         <td></td>
-         </tr>
-        </table>
 
  <table>
          <tr>
@@ -281,6 +260,11 @@ EOF;
               </table>
 
 </div>
+      <table style="text-align:center; font-size:7px;background-color:#3895F4; color:#fff;">
+         <tr>
+         <td>Aga su pedido online www.diegopennisi.es</td>
+         </tr>
+        </table>
 EOD;
 
         $pdf->writeHTMLCell(0, 0, '', '', $html3, 0, 1, 0, true, '', true);

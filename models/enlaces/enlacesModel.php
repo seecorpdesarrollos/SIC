@@ -31,11 +31,11 @@ class EnlacesPaginas
         //  Páginas DE proveedores
         // --------------------------------------------------------
 
-        else if ($get == "proveedores" or $get == 'okProv') {
+        else if ($get == "proveedores" or $get == 'okProv' or $get == 'okProvEdit') {
 
             $module = "views/modules/proveedores/proveedores.php";
 
-        } else if ($get == "agragarproveedores" or $get == 'editarProv') {
+        } else if ($get == "agragarproveedores" or $get == 'editarProv' or $get == 'Deletproveedores') {
 
             $module = "views/modules/proveedores/proveedores.php";
 

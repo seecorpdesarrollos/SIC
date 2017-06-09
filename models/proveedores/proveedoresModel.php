@@ -75,13 +75,43 @@ class ProveedoresModel
 
     public static function editarProveedoresModel($datosModel, $tabla)
     {
-        $sql = Conexion::conectar()->prepare("SELECT * FROM $tabla
-
+        $sql = Conexion::conectar()->prepare("SELECT * FROM $tabla ta
+        JOIN ciudad ciu ON ta.idCiudad = ciu.idCiudad
         WHERE idProveedor = :idProveedor");
         $sql->bindParam(":idProveedor", $datosModel);
         $sql->execute();
 
         return $sql->fetchAll();
         $sql->close();
+    }
+
+    public static function actualizarProveedorModel($datosModel, $tabla)
+    {
+        $sql = Conexion::conectar()->prepare("UPDATE $tabla SET nombreProveedor=:nombreProveedor,apellidoProveedor=:apellidoProveedor,nombreEmpresa=:nombreEmpresa,telefonoProveedor=:telefonoProveedor,direccionProveedor=:direccionProveedor,idCiudad=:idCiudad WHERE idProveedor=:idProveedor");
+
+        $sql->bindParam(":nombreProveedor", $datosModel['nombreProveedor']);
+        $sql->bindParam(":apellidoProveedor", $datosModel['apellidoProveedor']);
+        $sql->bindParam(":nombreEmpresa", $datosModel['nombreEmpresa']);
+        $sql->bindParam(":telefonoProveedor", $datosModel['telefonoProveedor']);
+        $sql->bindParam(":direccionProveedor", $datosModel['direccionProveedor']);
+        $sql->bindParam(":idCiudad", $datosModel['idCiudad']);
+        $sql->bindParam(":idProveedor", $datosModel['idProveedor']);
+
+        if ($sql->execute()) {
+            return 'success';
+        }
+        $sql->close();
+
+    }
+
+    public static function deleteProveedoresModel($datosModel, $tabla)
+    {
+        $sql = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE idProveedor = :idProveedor");
+
+        $sql->bindParam(':idProveedor', $datosModel);
+
+        if ($sql->execute()) {
+            return 'success';
+        }
     }
 }

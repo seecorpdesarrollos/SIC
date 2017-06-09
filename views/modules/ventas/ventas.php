@@ -267,7 +267,7 @@ array_push($array, $prod);?>
 </strong>
 El producto fue agregado al carrito correctamente.
 </div>';
-    echo " <meta HTTP-EQUIV = 'Refresh'CONTENT = '5; URL=detalles' /  > ";
+    echo " <meta HTTP-EQUIV = 'Refresh'CONTENT = '2; URL=detalles' /  > ";
 }
 if ($_GET['action'] == 'okBorradoVentas') {
     echo '
@@ -282,7 +282,7 @@ if ($_GET['action'] == 'okBorradoVentas') {
 </strong>
 El producto fue Borrado del carrito  correctamente.
 </div>';
-    echo " <meta HTTP-EQUIV = 'Refresh'CONTENT = '5; URL=detalles' /  > ";
+    echo " <meta HTTP-EQUIV = 'Refresh'CONTENT = '2; URL=detalles' /  > ";
 
 }
 ?>
@@ -338,7 +338,7 @@ El producto fue Borrado del carrito  correctamente.
 
                     <td align="center">
                         <a href="index.php?action=borrarVenta&idTemp=<?php echo $key['idTemp'] ?> &idProducto=<?php echo $key['idProducto'] ?>&unidad=<?php echo $key['unidad'] ?> ">
-                            <i class="fa fa-close btn btn-secondary text-danger"></i>
+                            <i class="fa fa-trash-o btn btn-secondary text-danger"></i>
                             </a>
 
                     </td>
@@ -361,23 +361,23 @@ $subTotal = number_format($subTotal, 2, ',', '');
   </div>
 <!-- segunda mitad de la tabla de ventas -->
         <div class="col-md-3">
-        <h2 class="alert alert-danger text-lg-center">Detalles</h2>
+        <h2 class="alert alert-danger text-lg-center text-danger">Detalles</h2>
           <td align="center">
-              <?php echo '<span class="text-warning">Total</span> ' . '<span class="right"> $' . $total . '</span>'; ?>
+              <?php echo '<span class="text-primary">Total</span> ' . '<span class="right"> $' . $total . '</span>'; ?>
           </td>
           <br>
           <td align="center">
-              <?php echo '<span class="text-warning">Iva </span> ' . '<span class="right"> $' . $iva . '</span>'; ?>
+              <?php echo '<span class="text-primary">Iva </span> ' . '<span class="right"> $' . $iva . '</span>'; ?>
           </td>
           <br>
           <td align="center">
-              <?php echo '<span class="text-warning">Sub Total</span>   ' . '<span class="right"> $' . $subTotal . '</span>'; ?>
+              <?php echo '<span class="text-primary">Sub Total</span>   ' . '<span class="right"> $' . $subTotal . '</span>'; ?>
           </td>
           <hr>
           <tr class="bg-primary ">
               <th scope="row" class="text-lg-center">
                   <h4>
-                 <?php echo ' <h4 class="alert alert-success ">Total' . '<span class="right"> $' . $total . '
+                 <?php echo ' <h4 class="alert alert-success text-success">Total' . '<span class="right"> $' . $total . '
               </h4> </span>'; ?>
                   </h4>
               </th>
