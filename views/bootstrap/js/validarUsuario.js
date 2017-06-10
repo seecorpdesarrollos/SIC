@@ -39,7 +39,6 @@ $("#nombreAdmin").change(function() {
 //    validar el registro de las Categorías
 // ===================================================================
 // 
-// valida los el registro de usuarios nuevos
 // 
 var usuarioExistente = false;
 $("#nombreCategorias").change(function() {
@@ -176,6 +175,45 @@ $("#nombreProductos").change(function() {
                 console.log(respuesta);
                 $("#button").removeAttr('disabled', 'disabled');
                 usuarioExistente = false;
+            }
+        }
+    })
+});
+// ===================================================================
+// 
+//    validar el registro de las Clientes
+// ===================================================================
+// 
+// 
+var clienteExistente = false;
+$("#clientes").change(function() {
+    var cliente = $('#clientes').val();
+    var datos = new FormData();
+    datos.append('inputvalidarCliente', cliente);
+    $.ajax({
+        url: 'views/ajax.php',
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(respuesta) {
+            if (respuesta == 1) {
+                $("#cli").html('<p  class="alert alert-danger">Este cliente ya Existe</p>');
+                $('#cli').addClass('a');
+                $("#form").addClass('has-danger');
+                $("#clientes").addClass('form-control form-control-danger');
+                $("#button").attr('disabled', 'disabled');
+                clienteExistente = true;
+            } else {
+                $("#form").removeClass('has-danger');
+                $("#form").addClass('has-success');
+                $("#clientes").removeClass('form-control form-control-danger');
+                $("#clientes").addClass('form-control form-control-success');
+                $('#clientes').css('border', 'solid 1px #8FF48A');
+                $("#cli").html('');
+                $("#button").removeAttr('disabled', 'disabled');
+                clienteExistente = false;
             }
         }
     })

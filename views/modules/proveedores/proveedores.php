@@ -64,9 +64,9 @@ if (isset($_GET['action'])) {
         <tr>
             <td>Nombre</td>
             <td>Empresa</td>
-            <td>Teléfono </td>
-            <td>Direción </td>
-            <td>Ubicacíon </td>
+            <td>Teléfono</td>
+            <td>Direción</td>
+            <td>Ubicacíon</td>
             <td>Acciones</td>
         </tr>
         </thead>

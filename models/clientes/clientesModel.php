@@ -1,6 +1,6 @@
 <?php
 
-require_once 'models/conexion.php';
+// require_once 'models/conexion.php';
 class ClientesModel
 {
 
@@ -19,6 +19,19 @@ class ClientesModel
 
         $sql->execute();
         return $sql->fetchAll();
+        $sql->close();
+    }
+
+    public static function validarClienteModel($datosModel, $tabla)
+    {
+
+        $sql = Conexion::conectar()->prepare("SELECT cuit FROM $tabla WHERE cuit = :cuit");
+        $sql->bindParam(':cuit', $datosModel);
+
+        $sql->execute();
+
+        return $sql->fetch();
+
         $sql->close();
     }
     public static function getClientesModelId($datosModel, $tabla)

@@ -5,12 +5,14 @@ require_once '../controllers/categorias/categoriasController.php';
 require_once '../controllers/proveedores/proveedoresController.php';
 require_once '../controllers/productos/productosController.php';
 require_once '../controllers/ventas/ventasController.php';
+require_once '../controllers/clientes/clientesController.php';
 
 require_once '../models/admin/adminModel.php';
 require_once '../models/categorias/categoriasModel.php';
 require_once '../models/proveedores/proveedoresModel.php';
 require_once '../models/productos/productosModel.php';
 require_once '../models/ventas/ventasModel.php';
+require_once '../models/clientes/clientesModel.php';
 
 require_once '../models/conexion.php';
 
@@ -21,6 +23,7 @@ class Ajax
     public $validarCategoria;
     public $validarProveedor;
     public $validarProducto;
+    public $validarCliente;
 
     public function validarUsuarioAjax()
     {
@@ -60,6 +63,14 @@ class Ajax
         echo $respuesta;
     }
 
+    public function validarClienteAjax()
+    {
+        $datos = $this->validarCliente;
+
+        $respuesta = ClientesController::validarClienteController($datos);
+        echo $respuesta;
+    }
+
 }
 
 if (isset($_POST['inputvalidarUsuario'])) {
@@ -84,4 +95,10 @@ if (isset($_POST['inputvalidarProducto'])) {
     $c = new Ajax();
     $c->validarProducto = $_POST['inputvalidarProducto'];
     $c->validarProductoAjax();
+}
+
+if (isset($_POST['inputvalidarCliente'])) {
+    $a = new Ajax();
+    $a->validarCliente = $_POST['inputvalidarCliente'];
+    $a->validarClienteAjax();
 }

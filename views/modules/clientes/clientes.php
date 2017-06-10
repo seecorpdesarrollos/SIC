@@ -216,9 +216,10 @@ $cli = ClientesController::getClientesController();
                                 </div>
                                 <div class="row">
                                  <div class="col-md-6">
-                                    <div class="form-group">
+                                    <div class="form-group"  id="form">
                                         <label for="exampleInputPassword1">Cuit</label>
-                                    <input class="form-control"  name="cuit" type="text" placeholder="Cuit">
+                                    <input class="form-control" id="clientes"  name="cuit" type="text" placeholder="Cuit">
+                                    <span id="cli"></span>
                                     </div>
                                 </div>
                                   <div class="col-md-6">

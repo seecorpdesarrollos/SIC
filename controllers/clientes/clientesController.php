@@ -9,6 +9,17 @@ class ClientesController
         return $respuesta;
     }
 
+    public function validarClienteController($validarCliente)
+    {
+        $datosController = $validarCliente;
+        $respuesta = ClientesModel::validarClienteModel($datosController, 'clientes');
+
+        if ($respuesta) {
+            echo 1;
+        } else {
+            echo 0;
+        }
+    }
     public static function getClientesControllerNoActivo()
     {
         $respuesta = ClientesModel::getClientesModelNoActivo('clientes');
