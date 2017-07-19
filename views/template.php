@@ -11,13 +11,14 @@
                 <hr>
                     <?php
 $mvc = new MvcController();
-$mvc->
-    enlacesPaginasController();
+$mvc->enlacesPaginasController();
 ?>
 
             </section>
+
         </div>
     </div>
+
 </div>
 
     <script src="views/bootstrap/js/app.js"></script>

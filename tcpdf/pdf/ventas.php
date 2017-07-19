@@ -103,6 +103,9 @@ class ImprimirVentas
           <td style="width:540px">Provincia : $key[nombreProvincia] -  Ciudad: $ciudad</td>
         </tr>
          <tr>
+          <td style="width:540px">Cuit : $key[cuit]</td>
+        </tr>
+         <tr>
           <td style="width:540px">Tipo Factura : $key[tipoFactura]</td>
         </tr>
 
@@ -273,6 +276,11 @@ EOF;
               </table>
 
 </div>
+       <table style="text-align:center; font-size:7px;background-color:#3895F4; color:#fff;">
+         <tr>
+         <td><h3>Haga su pedido online www.diegopennisi.es</h3></td>
+         </tr>
+        </table>
 EOD;
 
         $pdf->writeHTMLCell(0, 0, '', '', $html3, 0, 1, 0, true, '', true);

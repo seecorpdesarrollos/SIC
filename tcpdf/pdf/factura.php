@@ -262,7 +262,7 @@ EOF;
 </div>
       <table style="text-align:center; font-size:7px;background-color:#3895F4; color:#fff;">
          <tr>
-         <td>Aga su pedido online www.diegopennisi.es</td>
+         <td><h3>Haga su pedido online www.diegopennisi.es</h3></td>
          </tr>
         </table>
 EOD;

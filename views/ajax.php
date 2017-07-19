@@ -14,6 +14,7 @@ require_once '../models/productos/productosModel.php';
 require_once '../models/ventas/ventasModel.php';
 require_once '../models/clientes/clientesModel.php';
 
+
 require_once '../models/conexion.php';
 
 class Ajax
