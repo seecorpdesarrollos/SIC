@@ -183,4 +183,18 @@ class VentasModel
         $sql->close();
     }
 
+    public static function ventasDiariasModel($datosModel, $tabla)
+    {
+        $sql = Conexion::conectar()->prepare("SELECT * FROM $tabla ta
+            JOIN clientes cli on cli.idCliente = ta.idCliente
+            JOIN productos pro on ta.idProducto = pro.idProducto
+
+          WHERE fechaVenta = :fechaVenta");
+        $sql->bindParam(':fechaVenta', $datosModel);
+        $sql->execute();
+
+        return $sql->fetchAll();
+        $sql->close();
+    }
+
 }

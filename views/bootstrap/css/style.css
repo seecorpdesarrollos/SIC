@@ -86,9 +86,10 @@ body {
 }
 
 .main {
-    border: 2px solid #d0d0d0;
+    border: 1px solid #d0d0d0;
     box-shadow: 0 0 8px #d0d0d0;
-    padding: 5px;
+    padding: 20px;
+    margin: 20px;
 }
 
 #tablas, .sale {

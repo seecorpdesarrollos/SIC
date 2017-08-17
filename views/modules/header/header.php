@@ -8,10 +8,10 @@
   <link rel="stylesheet" type="text/css" href="views/bootstrap/css/normalize.css">
   <link rel="stylesheet" type="text/css" href="views/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="views/bootstrap/dataTables/css/dataTables.bootstrap4.css">
-  <link rel="stylesheet" type="text/css" href="views/bootstrap/css/style.css">
   <link rel="stylesheet" type="text/css" href="views/bootstrap/css/animate.css">
   <link rel="stylesheet" type="text/css" href="views/bootstrap/chosen/chosen.css">
-  <link rel="stylesheet" type="text/css" href="views/bootstrap/css/jquery-ui.min.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" type="text/css" href="views/bootstrap/css/style.css">
 
 
    <script src="views/bootstrap/dataTables/js/jquery.js"></script>

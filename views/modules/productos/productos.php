@@ -93,14 +93,14 @@ El Prducto fue Borrado correctamente del sistema.
         <div class="card-block">
             <?php if (isset($_GET['action'])): ?>
             <?php if ($_GET['action'] == 'productos' or $_GET['action'] == 'okProductos' or $_GET['action'] == 'okProdDelete' or $_GET['action'] == 'editarProd' or $_GET['action'] == 'editadoProd'): ?>
-            <h1 class="alert alert-warning text-center">
-                Listado de Productos
+             <i class="fa fa-list"></i>  <h1 class="alert alert-warning text-center">
+             <i class="fa fa-list"></i>  Listado de Productos
             </h1>
             <table class="table table-bordered table-sm" id="tablas">
                 <thead class="badge-primary text-white">
                     <tr>
                         <td>
-                            Producto
+                            fa-trash Producto
                         </td>
                         <td>
                             Proveedor

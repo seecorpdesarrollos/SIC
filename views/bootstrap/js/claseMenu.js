@@ -25,11 +25,11 @@ $(document).ready(function() {
         var target = $('nav a[href="' + main + '"]');
         target.addClass('actives');
     }
-    if (path == 'ventas' || path == 'detalles' || path == 'factura') {
+    if (path == 'ventas' || path == 'detalles' || path == 'factura' || path == 'reportes') {
         var target = $(' a[href="' + path + '"]');
         target.addClass('active');
     }
-    if (path == 'detalles' || path == 'factura') {
+    if (path == 'detalles' || path == 'factura' || path == 'reportes') {
         var main = 'ventas';
         var target = $('nav a[href="' + main + '"]');
         target.addClass('actives');

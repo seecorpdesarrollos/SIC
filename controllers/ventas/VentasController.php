@@ -104,4 +104,13 @@ class VentasController
         }
     }
 
+    public static function ventasDiariasController()
+    {
+        if (isset($_POST['ventaDiarias'])) {
+            $datosController = $_POST['fecha'];
+            $respuesta = VentasModel::ventasDiariasModel($datosController, 'detalles');
+            return $respuesta;
+        }
+    }
+
 }

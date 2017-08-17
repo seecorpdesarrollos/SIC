@@ -22,6 +22,11 @@
             Facturas
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="reportes">
+            Reportes
+        </a>
+    </li>
 </ul>
 <br/>
 <!--Fin Menu de ventas -->
@@ -32,7 +37,7 @@
     <?php if (isset($_GET['action'])): ?>
     <?php if ($_GET['action'] == 'ventas'): ?>
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-lg-6">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active">
                     <i class="fa fa-product-hunt">
@@ -49,9 +54,8 @@ $array = array();?>
 array_push($array, $prod);?>
 
             <?php endforeach?>
-            <div class="main">
                 <div class="row">
-                    <div class="col-8 col-sm-12">
+                    <div class="col-md-12 col-sm-12">
                         <span class="label label-default text-warning">
                             Producto
                         </span>
@@ -137,15 +141,15 @@ array_push($array, $prod);?>
                         </div>
                     </div>
                 </div>
+                  <hr/>
                 <div class="col-8 col-sm-12">
-                    <br/>
                     <button type="button" id="aceptar" class="btn btn-primary btn-block">
                         Aceptar
                     </button>
                 </div>
-                <br/>
             </div>
-        </div>
+
+
         <!-- Fin Formulario de ventas -->
 
         <!--Formulario del precio Ventas -->
@@ -159,7 +163,7 @@ array_push($array, $prod);?>
                             Ventas
                         </li>
                     </ol>
-                    <div class="main">
+                    <div class="">
                         <span class="label label-default">
                             Sub Total
                         </span>
@@ -225,22 +229,16 @@ array_push($array, $prod);?>
                                 </div>
                             </div>
                         </div>
-                        <center>
                             <hr/>
-                            <br/>
-                            <button type="submit" class="btn btn-outline-danger" name="post" id="post">
+                            <button type="submit" class="btn btn-outline-danger btn-block" name="post" id="post">
                                 <i class="fa fa-check">
                                 </i>
                                 Confirmar
                             </button>
-                        </center>
                     </div>
-                </div>
-                <br/>
-                <br/>
             </div>
         </div>
-        <br/>
+
         <input type="hidden" name="idProducto" id="idProducto"/>
         <input type="hidden" name="nombreProducto" id="nombreProducto"/>
         <input type="hidden" name="idCliente" id="idCliente"/>
@@ -249,9 +247,8 @@ array_push($array, $prod);?>
         <input type="hidden" name="precioVenta" id="precioVenta"/>
         <input type="hidden" name="tipoFactura" id="tipoFactura"/>
     </form>
-    <br/>
     <?php endif?>
-</div>
+
 <!--Fin Formulario del precio Ventas -->
 
 <!-- Comienza la tabla de ventas -->
@@ -298,7 +295,7 @@ El producto fue Borrado del carrito  correctamente.
                         Unidad
                     </th>
                     <th class="text-md-center">
-                        Nombre
+                        Producto
                     </th>
                     <th class="text-md-center">
                         Cantidad
@@ -381,6 +378,7 @@ $subTotal = number_format($subTotal, 2, ',', '');
               </h4> </span>'; ?>
                   </h4>
               </th>
+             <span class="alert alert-info"><strong>Cliente:</strong> <?php echo $key['nombreCliente'] . ' ' . $key['apellidoCliente'] ?></span>
         </div>
 
 </div>
@@ -388,7 +386,7 @@ $subTotal = number_format($subTotal, 2, ',', '');
 <br>
             <form  method="post">
                 <?php if (!empty($total)): ?>
-                <?php require 'btn.php';?>
+               <center> <?php require 'btn.php';?></center>
                 <?php endif?>
                 <?php $idFact = VentasController::getFecturaController();?>
                 <?php foreach ($idFact as $key): ?>
@@ -463,7 +461,76 @@ La Factura fue Borrada  correctamente.
       </table>
 <?php endif;?>
 <?php endif?>
+<!-- comienza los Reportes -->
+<?php if ($_GET['action'] == 'reportes'): ?>
+<!-- <h3 class="alert alert-info">Ventas Diarias</h3> -->
+    <div class="row">
+        <div class="col-md-2">
+           Elegir una Fecha:
+           <form method="post">
+            <input type="text" name="fecha" class="form-control" id="datepicker"><br>
+            <input type="submit" name="ventaDiarias" class="btn btn-outline-primary" value="Consultar">
+           </form>
+        </div>
+        <div class="col-md-8">
+         <h4>Ventas Diarias</h4>
+
+<?php $ventaDiarias = VentasController::ventasDiariasController()?>
+<table class="table table-striped" id='tablas'>
+    <thead class="bg-primary text-white">
+        <tr>
+            <td>Nombre y Apellido</td>
+            <td>Nombre del Producto</td>
+            <td>Nro y tipo de Factura</td>
+            <td>Monto total</td>
+        </tr>
+    </thead>
+        <?php if (isset($_POST['ventaDiarias'])): ?>
+        <?php foreach ($ventaDiarias as $key): ?>
+            <?php $total = $total + $key['totalVenta']?>
+    <tr>
+        <td align="center"> <?php echo $key['nombreCliente'] . ' ' . $key['apellidoCliente'] ?></td>
+        <td align="center"><?php echo $key['nombreProducto'] ?></td>
+        <td align="center"><?php echo 'Nro: ' . $key['numFac'] . ' ' . 'Tipo:' . $key['tipoFactura'] ?></td>
+        <td align="center"><?php echo '$' . $key['totalVenta'] ?></td>
+    </tr>
+        <?php endforeach?>
+       <?php endif?>
+</table>
+        </div>
+          <div class="col-md-2">
+            <div class="alert alert-info" role="alert">
+               <h3>  <strong> Ventas Total del dia <?php echo date("d-m-Y", strtotime($key['fechaVenta'])); ?>: </strong><span class="text-danger"> <i class="fa fa-usd"></i> <?php echo $total; ?></span></h3>
+            </div>
+          </div>
+        <?php endif?>
+    </div>
+<br><br><br>
+    <!-- Final de los reporte -->
 <!-- script para pasar los datos de los productos al formulario de vanta. -->
+<script>
+ $.datepicker.regional['es'] = {
+ closeText: 'Cerrar',
+ prevText: '< Ant',
+ nextText: 'Sig >',
+ currentText: 'Hoy',
+ monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+ monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+ dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+ dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+ dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+ weekHeader: 'Sm',
+ dateFormat: 'yy/m/d',
+ firstDay: 1,
+ isRTL: false,
+ showMonthAfterYear: false,
+ yearSuffix: ''
+ };
+ $.datepicker.setDefaults($.datepicker.regional['es']);
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
 <script>
      $(function() {
      $("#post").attr('disabled', 'disabled');

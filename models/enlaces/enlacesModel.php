@@ -68,7 +68,7 @@ class EnlacesPaginas
         //  Páginas DE ventas
         // --------------------------------------------------------
 
-        else if ($get == "ventas" || $get == 'detalles' || $get == 'okVentas' || $get == 'borrarVenta' || $get == 'factura') {
+        else if ($get == "ventas" || $get == 'detalles' || $get == 'okVentas' || $get == 'borrarVenta' || $get == 'factura' || $get == 'reportes') {
 
             $module = "views/modules/ventas/ventas.php";
 
