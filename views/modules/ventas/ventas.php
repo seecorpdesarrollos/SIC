@@ -465,18 +465,21 @@ La Factura fue Borrada  correctamente.
 <?php if ($_GET['action'] == 'reportes'): ?>
 <!-- <h3 class="alert alert-info">Ventas Diarias</h3> -->
     <div class="row">
-        <div class="col-md-2">
+      <!-- <div class="col-md-6">
+      </div> -->
+        <div class="col-md-6 mx-md-auto">
+
            Elegir una Fecha:
            <form method="post">
             <input type="text" name="fecha" class="form-control" id="datepicker"><br>
-            <input type="submit" name="ventaDiarias" class="btn btn-outline-primary" value="Consultar">
+            <center><input type="submit" name="ventaDiarias" class="btn btn-outline-primary" value="Consultar"></center>
            </form>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
          <h4>Ventas Diarias</h4>
 
 <?php $ventaDiarias = VentasController::ventasDiariasController()?>
-<table class="table table-striped" id='tablas'>
+<table class="table table-striped tabla-sm" id='tablas'>
     <thead class="bg-primary text-white">
         <tr>
             <td>Nombre y Apellido</td>
@@ -498,9 +501,9 @@ La Factura fue Borrada  correctamente.
        <?php endif?>
 </table>
         </div>
-          <div class="col-md-2">
+          <div class="col-md-3">
             <div class="alert alert-info" role="alert">
-               <h3>  <strong> Ventas Total del dia <?php echo date("d-m-Y", strtotime($key['fechaVenta'])); ?>: </strong><span class="text-danger"> <i class="fa fa-usd"></i> <?php echo $total; ?></span></h3>
+               <h5>  <strong> Ventas Total del dia <?php echo date("d-m-Y", strtotime($key['fechaVenta'])); ?>: <span class="text-gray-dark"> <i class="fa fa-usd"></i> <?php echo $total; ?></span></strong></h5>
             </div>
           </div>
         <?php endif?>
