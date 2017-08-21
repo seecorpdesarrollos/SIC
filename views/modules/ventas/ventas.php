@@ -479,7 +479,7 @@ La Factura fue Borrada  correctamente.
          <h4>Ventas Diarias</h4>
 
 <?php $ventaDiarias = VentasController::ventasDiariasController()?>
-<table class="table table-striped tabla-sm" id='tablas'>
+<table class="table table-striped table-sm" id='tablas'>
     <thead class="bg-primary text-white">
         <tr>
             <td>Nombre y Apellido</td>
