@@ -1,9 +1,9 @@
 <?php session_start();if (!$_SESSION["nombreAdmin"]) {header("location:ingreso");exit();}?>
-<ol class="breadcrumb">
+<!-- <ol class="breadcrumb">
     <li class="breadcrumb-item active">
         Sección de Ventas
     </li>
-</ol>
+</ol> -->
 
 <!-- Menu de ventas -->
 <ul class="nav nav-tabs">
@@ -465,18 +465,19 @@ La Factura fue Borrada  correctamente.
 <?php if ($_GET['action'] == 'reportes'): ?>
 <!-- <h3 class="alert alert-info">Ventas Diarias</h3> -->
     <div class="row">
-      <!-- <div class="col-md-6">
-      </div> -->
         <div class="col-md-6 mx-md-auto">
 
-           Elegir una Fecha:
+           <span class="text-danger">Elegir una Fecha:</span>
            <form method="post">
-            <input type="text" name="fecha" class="form-control" id="datepicker"><br>
+            <input type="text" name="fecha" class="form-control" id="datepicker">
+            <div class="clearfix"><br> </div>
+
             <center><input type="submit" name="ventaDiarias" class="btn btn-outline-primary" value="Consultar"></center>
+            <div class="clearfix"><br> </div>
            </form>
         </div>
-        <div class="col-md-9">
-         <h4>Ventas Diarias</h4>
+        <div class="col-md-9 top">
+         <h4 class="alert alert-warning">Ventas Diarias</h4>
 
 <?php $ventaDiarias = VentasController::ventasDiariasController()?>
 <table class="table table-striped table-sm" id='tablas'>
