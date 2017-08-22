@@ -1,12 +1,4 @@
-<?php session_start();
-if (!$_SESSION["nombreAdmin"]) {
-    header("location:ingreso");
-    exit();
-} else if ($_SESSION['rol'] !== 'A') {
-    header('location:inicioUs');
-    exit();
-}
-?>
+<?php session_start();if (!$_SESSION["nombreAdmin"]) {header("location:ingreso");exit();} else if ($_SESSION['rol'] !== 'A') {header('location:inicioUs');exit();}?>
 <body class="body">
     <div class="mains">
         <div class="card bg-primary text-white">
@@ -16,7 +8,6 @@ if (!$_SESSION["nombreAdmin"]) {
         </div>
         <br/>
         <div class="row">
-            <!-- <center> -->
             <div class="col-lg-5">
                 <figure>
                     <img height="300" src="views/bootstrap/img/logsin.png"/>
@@ -27,8 +18,8 @@ if (!$_SESSION["nombreAdmin"]) {
             </div>
             <div class="col-lg-7">
                 <p class="font-italic text text-uppercase">
-                    <u>
-                        Seccíón de inventario.
+                    <u class="alert badge-danger text-white">
+                        Se visualizará todo producto que su inventario sea menor a 10 Unidades.
                     </u>
                 </p>
                 <div class="card">
@@ -36,18 +27,9 @@ if (!$_SESSION["nombreAdmin"]) {
                         <div class="alert alert-info text-gray-dark" align="center ">
                             <?php echo date('d-m-Y H:i') ?>
                         </div>
-                            <?php echo '<div class="alert alert-warning" align="center ">
-                             <strong>Por Favor compruebe el stock</strong>
-                              </div>'; ?>
-                       <center>
-                           <a class="btn btn-outline-primary center animated fadeInDown" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                <?php echo '<i class="fa fa-plus-circle"></i> Desplegar Aqui' ?>
-                            </a>
-                        </center><br>
-                        <div class="collapse" id="collapseExample" style="width:600px; height:80px; overflow: scroll;
-                            <div class="card card-block">
-                        <?php foreach ($result as $key): ?>
-                        <?php if ($key['cantidadIngresada'] <= 10): ?>
+                        <div class="card card-block">
+                            <?php foreach ($result as $key): ?>
+                            <?php if ($key['cantidadIngresada'] < 10): ?>
                             <div class="alert alert-danger">
                                 <h5>
                                     <strong>
@@ -55,13 +37,10 @@ if (!$_SESSION["nombreAdmin"]) {
                                     </strong>
                                 </h5>
                             </div>
-                                    <?php endif?>
-                            <?php endforeach?>
-                            <div class="alert alert-success" role="alert">
-                                <strong>OK</strong> stock disponibles.
-                            </div>
-                            </div>
                         </div>
+                        <?php endif?>
+                        <?php endforeach?>
+                    </div>
                 </div>
             </div>
         </div>
