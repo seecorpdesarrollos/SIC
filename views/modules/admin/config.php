@@ -73,7 +73,7 @@ if (isset($_GET['action'])) {
   <div class="col-lg-12">
     <div class="" id="tabla" >
       <table class="table table-bordered table-sm ta" id="tablas">
-            <thead class="bg-info text-white">
+            <thead class="bg-primary text-white">
               <tr>
                 <td align="center">Nombre Admin</td>
                 <td align="center">Contraseña</td>

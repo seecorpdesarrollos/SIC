@@ -118,7 +118,7 @@ $cli = ClientesController::getClientesController();
 ?>
 
                             <table class="table table-striped table-sm" id="tablas">
-                                <thead class="bg-inverse">
+                                <thead class="bg-primary text-white">
                                     <tr>
                                         <td>Nombre</td>
                                         <td>Apellido</td>

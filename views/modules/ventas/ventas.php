@@ -289,7 +289,7 @@ El producto fue Borrado del carrito  correctamente.
    <div class="row">
     <div class="col-md-9" id="tabla">
         <table class="table table-bordered table-sm" id="ventas">
-            <thead class="bg-info text-white table-bordered">
+            <thead class="bg-primary text-white table-bordered">
                 <tr>
                     <th class="text-md-center">
                         Unidad

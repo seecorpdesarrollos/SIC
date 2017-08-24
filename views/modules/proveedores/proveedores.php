@@ -60,7 +60,7 @@ if (isset($_GET['action'])) {
     <?php if ($_GET['action'] == 'proveedores' or $_GET['action'] == 'okproveedores' or $_GET['action'] == 'Deletproveedores' or $_GET['action'] == 'okProv' or $_GET['action'] == 'okProvEdit'): ?>
       <h1 class="alert alert-warning text-center">Listado de Proveedores</h1>
       <table class="table table-bordered table-sm" id="tablas">
-        <thead class="badge-warning actives">
+        <thead class="badge-primary actives">
         <tr>
             <td>Nombre</td>
             <td>Empresa</td>
