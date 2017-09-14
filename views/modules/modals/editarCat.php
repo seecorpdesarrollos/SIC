@@ -23,8 +23,8 @@
             <input type="hidden" name="idCategoria" value="<?php echo $resp['idCategoria']; ?>">
           <?php endforeach?>
           <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary" name="editarCat">Editar Usuario</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary" name="editarCat">Editar Categoría</button>
         </div>
     </form>
         </div>

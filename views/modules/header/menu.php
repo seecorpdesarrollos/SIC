@@ -27,14 +27,14 @@
                     Proveedores
                 </a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="ventas">
-                    Ventas
-                </a>
-            </li>
              <li class="nav-item active">
                 <a class="nav-link" href="clientes">
                     Clientes
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="ventas">
+                    Ventas
                 </a>
             </li>
             <!-- user -->

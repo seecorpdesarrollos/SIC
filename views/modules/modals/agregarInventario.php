@@ -50,14 +50,14 @@
                 <label for="precioVenta" class="text-primary">
 <br>
                 </label>
-                <input type="submit" class="btn btn-outline-danger btn-block"  name="agregarInventario" />
+                <input type="submit" class="btn btn-outline-danger btn-block"  name="agregarInventario" value="Agregar Stock" />
             </div>
         </div>
     </div>
 </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cerrar</button>
         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
       </div>
     </div>

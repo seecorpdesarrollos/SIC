@@ -42,7 +42,7 @@
                 <li class="breadcrumb-item active">
                     <i class="fa fa-product-hunt">
                     </i>
-                    Productos
+                    Ventas
                 </li>
             </ol>
             <?php $ven = ProductosController::getInventarioController();
@@ -91,10 +91,8 @@ array_push($array, $prod);?>
                     </div>
                     <div class="col-8 col-sm-6">
                         <span class="label label-default text-warning">
-                            Cantidad
-                            <small class="text-gray-dark">
-                                (kilos)
-                            </small>
+                            Kilos
+
                         </span>
                         <div class="input-group">
                             <span class="input-group-addon">
@@ -106,10 +104,8 @@ array_push($array, $prod);?>
                     </div>
                     <div class="col-8 col-sm-8">
                         <span class="label label-default text-warning">
-                            Cantidad de Producto
-                            <small class="text-gray-dark">
-                                (Unidades)
-                            </small>
+                           Unidades
+
                         </span>
                         <div class="input-group">
                             <span class="input-group-addon">
@@ -160,7 +156,7 @@ array_push($array, $prod);?>
                         <li class="breadcrumb-item active">
                             <i class="fa fa-money">
                             </i>
-                            Ventas
+                            Total de venta
                         </li>
                     </ol>
                     <div class="">
